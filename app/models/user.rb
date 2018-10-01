@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :resquests, dependent: :destroy
   has_many :user_reviews, dependent: :destroy
 
-  before_save {email.downcase!}
+  before_save{email.downcase!}
 
   validates :name, presence: true,
     length: {maximum: Settings.user.name.max_length}

@@ -7,6 +7,12 @@ en:
       p: "Library book 2018"
     header:
       login: "Log In"
+      users: "Users"
+      account: "Account"
+      profile: "Profile"
+      setting: "Settings"
+      logout: "Log out"
+
   static_pages:
     home:
       title: "Home"
@@ -22,3 +28,28 @@ en:
     about:
       title: "About"
       text: "Read for more information"
+  users:
+    new:
+      title: "Sign Up"
+      confirm: "Confirmation"
+      create: "Create my account"
+    controller:
+      create:
+        welcome: "Welcome to the Library App"
+      load:
+        no_user: "User not found"
+  shared:
+    error:
+      the_form_contain: "The form contains"
+      error_count:
+        one: "1 error"
+        other: "%{count} errors"
+  session:
+    new:
+      title: "Log In"
+      signup: "Sign up now!"
+      newuser: "New user?"
+    controller:
+      invalid: "Invalid email/password combination"
+      congrate: "Congratulation!"
+
