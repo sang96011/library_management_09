@@ -1,0 +1,5 @@
+<li>
+  <%= link_to publisher.name, edit_publisher_url(publisher) %> |
+  <%= publisher.address %>
+  <%= link_to t(".delete"), publisher, method: :delete, data: {confirm: t(".confirm")} %>
+</li>

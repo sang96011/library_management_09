@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def load_user
     @user = User.find_by id: params[:id]
     return if @user
-      flash[:info] = t "users.controller.load.no_user"
-      redirect_to signup_path
+    flash[:info] = t "users.controller.load.no_user"
+    redirect_to signup_path
   end
 end

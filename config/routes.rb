@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   get "/login", to: "session#new"
   post "/login", to: "session#create"
   delete "/logout", to: "session#destroy"
-  resources :users
-  resources :authors
   get "/authors", to: "authors#new"
   post "/authors", to: "authors#create"
+  resources :users
+  resources :authors
+  resources :publishers
 end
