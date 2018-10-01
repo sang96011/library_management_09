@@ -165,13 +165,6 @@ en:
     one: "The form contains %{count} error"
     other: "The form contains %{count} errors"
   cant_permit: "You do not have permission!"
-  flash:
-    update_success: "Update infomation success!"
-    create_success:  "Create success!"
-    cant_find: "Can't find data!"
-    delete_success: "Delete success!"
-    delete_fail: "Delete fail!"
-    cant_permit: "You do not have permission to view"
   comment:
     commented: "Comment successfullly added"
     failed: "Comment failled added"
@@ -189,6 +182,7 @@ en:
     success: "Unliked this book"
     fail: "Unlike failled"
   show_like: "Can not show. I don't know reason. Please don't ask me why"
+
   follow:
     success: "You followed this book"
     fail: "Follow failled"
@@ -197,3 +191,30 @@ en:
     fail: "Unfollow failled"
   show_follow: "Can not show. I don't know reason. Please don't ask me why"
 
+  categories:
+    category:
+      confirm: "Are you sure?"
+      delete: "Delete"
+      edit: "Edit"
+    index:
+      new: "New Category"
+      search: "Search"
+      id: "ID"
+      name: "Name"
+      parent: "Parent"
+      action: "Action"
+    edit:
+      update: "Update Category"
+    new:
+      create: "Create Category"
+    create:
+      created: "Create success"
+      create_fail: "Create fail"
+    update:
+      updated: "Update success"
+      update_fail: "Update fail!"
+    destroy:
+      deleted: "Delete success"
+      delete_fail: "Delete fail"
+    load_category:
+      no_category: "Can't found category"
