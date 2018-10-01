@@ -128,3 +128,14 @@ input {
     color: $state-danger-text;
   }
 }
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 15px 0;
+    border-bottom: 1px solid $gray-medium-light;
+    text-align: justify;
+  }
+}

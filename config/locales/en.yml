@@ -38,6 +38,31 @@ en:
         welcome: "Welcome to the Library App"
       load:
         no_user: "User not found"
+  author:
+    controller:
+      create: "Author has been created!"
+      destroy:
+        success: "Author has been deleted"
+        danger: "You can't delete author. Don't ask me why!"
+      load:
+        no_author: "Author invalid"
+      update:
+        success: "Author has been updated"
+    edit:
+      title: "Update Author"
+      h1: "Update Author's information"
+      shared/error: "shared/error_messages"
+      submit: "Save changes"
+      changes: "Changes"
+      link_change: "http://gravatar.com/emails"
+    new:
+      title: "New Author"
+      shared/error: "shared/error_messages"
+      create: "Create author"
+    index:
+      title: "All authors"
+      delete: "Delete Author"
+      confirm: "Are you sure?"
   shared:
     error:
       the_form_contain: "The form contains"

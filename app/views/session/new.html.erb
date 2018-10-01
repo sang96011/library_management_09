@@ -13,10 +13,6 @@
 
       <%= f.submit t("session.new.title"), class: "btn btn-primary" %>
     <% end %>
-
-    <p>
-      <%= link_to t("session.new.newuser") %>
-      <%= link_to t("session.new.signup"), signup_path %>
-    </p>
+    <p><%= link_to t("session.new.signup"), signup_path %></p>
   </div>
 </div>

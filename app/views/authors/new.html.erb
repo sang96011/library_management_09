@@ -1,0 +1,17 @@
+<% provide :title, t("author.new.title") %>
+<h1><%= t "author.new.title" %></h1>
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+  <%= form_for @author do |f| %>
+    <%= render t("author.new.shared/error") , object: f.object%>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+
+    <%= f.submit t "author.new.create", class: "btn btn-primary" %>
+  <% end %>
+</div>
+</div>
