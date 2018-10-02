@@ -63,6 +63,7 @@ en:
       title: "All authors"
       delete: "Delete Author"
       confirm: "Are you sure?"
+      search: "Search"
   shared:
     error:
       the_form_contain: "The form contains"
