@@ -14,6 +14,7 @@ en:
       logout: "Log out"
       publisher: "Publisher"
       user: "User"
+      author: "Author"
   static_pages:
     home:
       title: "Home"
@@ -41,6 +42,8 @@ en:
         no_user: "User not found"
     index:
       all: "All user"
+      download: "Download:"
+      excel: "Excel"
     edit:
       submit: "Save changes"
       update: "Update user"
@@ -70,6 +73,8 @@ en:
       delete: "Delete Author"
       confirm: "Are you sure?"
       search: "Search"
+      download: "Download:"
+      excel: "Excel"
   shared:
     error:
       the_form_contain: "The form contains"
