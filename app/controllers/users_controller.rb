@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_action :load_user, except: [:index, :new, :create]
   before_action :admin?, only: :make_admin
 
-  def show; end
+  def show
+    @user = User.find_by id: params[:id]
+  end
 
   def new
     @user = User.new
@@ -19,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = User.find_by id: params[:id]
     @users = User.search(params[:query]).newest._page params[:page]
     respond_to do |format|
       format.html
@@ -38,6 +41,20 @@ class UsersController < ApplicationController
     @user.update_attribute(:admin, true)
     flash[:success] = t ".made_admin"
     redirect_to users_path
+  end
+
+   def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render :show_follow
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render :show_follow
   end
 
   private

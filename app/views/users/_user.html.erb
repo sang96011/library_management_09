@@ -1,4 +1,15 @@
-<li>
-  <%= link_to user.name, edit_user_path(user) %>
-  <%= button_to t(".make_admin"), {action: "make_admin", id: user.id }, method: :put %><br>
-</li>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th class="active" width="30%"><%= t "users.name" %></th>
+        <td class="text-center active" width="40%">
+          <%= link_to user.name, edit_user_path(user) %>
+        </td>
+        <td class="text-right active">
+          <%= link_to t("user.view_profile"), @user %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

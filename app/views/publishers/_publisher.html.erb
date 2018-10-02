@@ -1,5 +1,34 @@
-<li>
-  <%= link_to publisher.name, edit_publisher_url(publisher) %> |
-  <%= publisher.address %>
-  <%= link_to t(".delete"), publisher, method: :delete, data: {confirm: t(".confirm")} %>
-</li>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th class="active" width="30%"><%= t "authors.name" %></th>
+        <th class="text-center active" width="40%"><%= t "authors.update" %></th>
+        <th class="text-right active"><%= t "authors.delete" %></th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<% @publishers.each do |publisher| %>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <tr>
+          <td class="active" width="30%">
+            <%= link_to publisher.name, edit_publisher_url(publisher) %>
+          </td>
+          <td class="text-center active" width="40%">
+            <%= publisher.address %>
+          </td>
+          <td class="text-right active">
+            <%= link_to t(".delete"),
+              publisher, method: :delete, data: {confirm: t(".confirm")} %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+<% end %>
+<%= will_paginate %>
+

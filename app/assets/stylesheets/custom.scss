@@ -152,3 +152,47 @@ input {
     text-align: justify;
   }
 }
+
+#search
+.btn-search {
+    background: #424242;
+    border-radius: 0;
+    color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #1c1c1c;
+  }
+  .btn-search:link, .btn-search:visited {
+    color: #fff;
+  }
+  .btn-search:active, .btn-search:hover {
+    background: #1c1c1c;
+    color: #fff;
+  }
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.users.follow {
+  padding: 0;
+}

@@ -1,0 +1,5 @@
+<% @category.each do |category| %>
+  <li>
+  <%= link_to category.name, books_path(category: category.name) %>
+  </li>
+<% end %>

@@ -52,7 +52,15 @@ en:
       update: "Update user"
     user:
       make_admin: "Make Admin"
+      view_profile: "View my profile"
+    follow: "Follow"
+    unfollow: "Unfollow"
+    following: "Following"
+    name: "Name"
+
   authors:
+    update: "Update"
+    name: "Name"
     created: "Author has been created!"
     destroy_success: "Author has been deleted"
     destroy_danger: "You can't delete author. Don't ask me why!"
@@ -71,11 +79,49 @@ en:
       create: "Create author"
     index:
       title: "All authors"
-      delete: "Delete Author"
+      delete: "Delete"
       confirm: "Are you sure?"
       search: "Search"
       download: "Download:"
       excel: "Excel"
+  books:
+    name: "Name"
+    author: "Author"
+    publisher: "Publisher"
+    created: "Your book has been created"
+    updated: "Your book has been updated"
+    no_book: "No book matched"
+    destroy:
+      success: "Your book has been deleted"
+      danger: "You can't delete book. Don't ask me why!"
+    index:
+      title: "All Books"
+      content: "You can find all the book here"
+      search: "Search"
+    show:
+      title: "Book"
+      edit: "Edit"
+      delete: "Delete"
+      confirm: "Are you sure?"
+      author: "Author: "
+      category: "Category: "
+      publisher: "Publisher: "
+      numberpage: "Number page: "
+      content: "Content: "
+    new:
+      title: "New Book"
+      back: "Back"
+    edit:
+      title: "Edit Book"
+    form:
+      choose: "Choose a category"
+      type: "Type the post title here"
+      type2: "Type the post tect here"
+      author: "Name of author"
+      publisher: "Name of publisher"
+      year: "Book was published in..."
+      number_page: "How many page book has?"
+      status: "Plz fill in the status of book!"
   shared:
     error:
       the_form_contain: "The form contains"
@@ -113,3 +159,20 @@ en:
     one: "The form contains %{count} error"
     other: "The form contains %{count} errors"
   cant_permit: "You do not have permission!"
+  flash:
+    update_success: "Update infomation success!"
+    create_success:  "Create success!"
+    cant_find: "Can't find data!"
+    delete_success: "Delete success!"
+    delete_fail: "Delete fail!"
+    cant_permit: "You do not have permission to view"
+  comment:
+    commented: "Comment successfullly added"
+    failed: "Comment failled added"
+    title: "Comments:"
+    new: "New Comment"
+    fill: "Please enter a comment"
+  relationship:
+    danger: "You haven't logged in"
+  application:
+    login: "Please log in!"

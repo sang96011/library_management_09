@@ -1,0 +1,23 @@
+<dt><%= t "comment.new" %></dt>
+
+<%= render "shared/error_messages", object: @new_comment %>
+
+<div class="row">
+<div class="col-xs-12">
+  <%= form_for(@new_comment, :html => {class: "form-horizontal",
+      role: "form"}) do |f| %>
+  <%= f.hidden_field :target_id, value: object.id %>
+  <%= f.hidden_field :target_type, value: object.class.name %>
+  <div class="form-group">
+    <div class="col-sm-8">
+      <%= f.text_area :body, class: "form-control",
+        placeholder: t("comment.fill"), autofocus: true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-1 col-sm-2">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,20 @@
+<% provide :title, @book.name %>
+<h1><%= @book.name %></h1>
+<div class="container">
+  <dl>
+  <dt><%= t(".author") %></dt><dd><%= @book.author_name %></dd>
+  <dt><%= t(".category") %></dt><dd><%= @book.category_name %></dd>
+  <dt><%= t(".publisher") %></dt><dd><%= @book.publisher_name %></dd>
+  <dt><%= t(".numberpage") %></dt><dd><%= @book.number_page %></dd>
+  </dl>
+
+  <dt><%= t(".content") %></dt><p class="text-justify"><%= @book.content %></p><br>
+  <%= render partial: "comments/form", locals: {object: @book} %>
+
+  <dd><%= render @comment %></dd><br>
+
+  <%= link_to t(".edit"), edit_book_path(@book) %>
+  <%= link_to t(".delete"), @book,
+   method: :delete, data: { confirm: t(".confirm") } %>
+
+</div>

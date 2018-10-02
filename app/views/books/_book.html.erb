@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th class="text-justify active"><%= t "books.name" %></th>
+        <th class="text-center active"><%= t "books.author" %></th>
+        <th class="text-right active"><%= t "books.publisher" %></th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<% @books.each do |book| %>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <tr>
+          <td class="active" width="40%"><%= link_to book.name, book %></td><br>
+          <td class="active"><%= book.author.name %></td><br>
+          <td class="text-right active"><%= book.publisher.name %></td><br>
+        </tr>
+      </table>
+    </div>
+  </div>
+<% end %>

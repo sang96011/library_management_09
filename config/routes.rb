@@ -10,8 +10,15 @@ Rails.application.routes.draw do
   get "/login", to: "session#new"
   post "/login", to: "session#create"
   delete "/logout", to: "session#destroy"
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :authors
   resources :publishers
   put "admin/:id", to: "users#make_admin", as: "make_admin"
+  resources :books
+  resources :comments
+  resources :relationships, only: [:create, :destroy]
 end

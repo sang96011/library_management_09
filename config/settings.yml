@@ -12,3 +12,8 @@ author:
     per_page: 10
 publisher:
   per_page: 10
+book:
+  index:
+    per_page: 10
+  cols: 60
+  rows: 20
