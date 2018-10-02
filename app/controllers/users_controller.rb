@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.newest.paginate(page: params[:page],
+      per_page: Settings.user.index.per_page)
+  end
+
   private
 
   def user_params

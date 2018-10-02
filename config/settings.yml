@@ -5,6 +5,8 @@ user:
     max_length: 255
   pass:
     min_length: 6
+  index:
+   per_page: 10
 author:
   index:
     per_page: 10

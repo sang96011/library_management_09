@@ -38,6 +38,8 @@ en:
         welcome: "Welcome to the Library App"
       load:
         no_user: "User not found"
+    index:
+      all: "All user"
   author:
     controller:
       create: "Author has been created!"
