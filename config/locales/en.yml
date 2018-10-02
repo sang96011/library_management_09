@@ -73,6 +73,7 @@ en:
     destroy_danger: "You can't delete author. Don't ask me why!"
     no_author: "Author invalid"
     updated: "Author has been updated"
+    detail: "Detail"
     edit:
       title: "Update Author"
       h1: "Update Author's information"

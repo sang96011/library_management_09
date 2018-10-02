@@ -18,6 +18,11 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  resources :authors do
+    member do
+      get :follow, :unfollow
+    end
+  end
   resources :books do
     resources :user_reviews
     member do
