@@ -1,5 +1,8 @@
 class LikesController < ApplicationController
   before_action :load_book
+  def index
+    @likes = Like.all
+  end
 
   def new
     @like = Like.new
