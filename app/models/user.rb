@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   before_save{email.downcase!}
 
+  scope :newest, ->{order created_at: :DESC}
+
   validates :name, presence: true,
     length: {maximum: Settings.user.name.max_length}
   validates :email, presence: true,
