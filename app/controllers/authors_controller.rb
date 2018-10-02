@@ -2,8 +2,7 @@ class AuthorsController < ApplicationController
   before_action :load_author, except: [:new, :create, :index]
 
   def index
-     @authors = Author.paginate(page: params[:page],
-      per_page: Settings.author.index.per_page)
+    @authors = Author.search(params[:search])._page params[:page]
   end
 
   def show; end
@@ -46,7 +45,7 @@ class AuthorsController < ApplicationController
   private
 
   def author_params
-    params.require(:author).permit :name, :content
+    params.require(:author).permit :name, :content, :search
   end
 
   def load_author
