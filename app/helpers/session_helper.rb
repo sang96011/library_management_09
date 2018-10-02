@@ -15,4 +15,11 @@ module SessionHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  def admin?
+    unless logged_in? && @current_user.admin
+      flash[:danger] = t "flash.cant_permit"
+      redirect_to root_path
+    end
+  end
 end

@@ -8,3 +8,5 @@ user:
 author:
   index:
     per_page: 10
+publisher:
+  per_page: 10

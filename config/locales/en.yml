@@ -12,7 +12,7 @@ en:
       profile: "Profile"
       setting: "Settings"
       logout: "Log out"
-
+      publisher: "Publisher"
   static_pages:
     home:
       title: "Home"
@@ -78,4 +78,28 @@ en:
     controller:
       invalid: "Invalid email/password combination"
       congrate: "Congratulation!"
-
+  publishers:
+    index:
+      all: "All Publisher"
+      new: "New publisher"
+      search: "Search"
+      download: "Download:"
+      csv: "CSV"
+      excel: "Excel"
+    edit:
+      update: "Update publisher"
+    new:
+      create: "Create publisher"
+    publisher:
+      delete: "Delete"
+      confirm: "You sure?"
+  error:
+    one: "The form contains %{count} error"
+    other: "The form contains %{count} errors"
+  flash:
+    update_success: "Update infomation success!"
+    create_success:  "Create success!"
+    cant_find: "Can't find data!"
+    delete_success: "Delete success!"
+    delete_fail: "Delete fail!"
+    cant_permit: "You do not have permission to view"

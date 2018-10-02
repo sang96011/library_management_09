@@ -1,0 +1,16 @@
+<%= provide :title, t(".all") %>
+<h1><%= t(".all") %></h1>
+
+<ul class="users">
+  <%= form_tag publishers_path, method: :get do %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag t(".search"), name: nil %>
+  <% end %>
+  <%= link_to t(".new"), new_publisher_path, class: "btn btn-primary" %>
+  <%= render @publishers %>
+  <%= will_paginate %>
+</ul>
+
+<%= t(".download") %>
+<%= link_to t(".excel"), publishers_path(format: "xls") %>
+
