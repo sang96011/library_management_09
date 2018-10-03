@@ -18,7 +18,7 @@ class AuthorsController < ApplicationController
   def create
     @author = Author.new author_params
     if @author.save
-      flash[:info] = t "author.controller.create"
+      flash[:info] = t ".created"
       redirect_to root_path
     else
       render :new
@@ -29,7 +29,7 @@ class AuthorsController < ApplicationController
 
   def update
     if @author.update_attributes(author_params)
-      flash[:success] = t "author.controller.update.success"
+      flash[:success] = t ".updated"
       redirect_to authors_path
     else
       render :edit
@@ -38,10 +38,10 @@ class AuthorsController < ApplicationController
 
   def destroy
     if @author.destroy
-      flash[:success] = t "author.controller.destroy.success"
+      flash[:success] = t ".destroy_success"
       redirect_to authors_path
     else
-      flash[:danger] = t "author.controller.destroy.danger"
+      flash[:danger] = t ".destroy_danger"
       redirect_to root_path
     end
   end
@@ -55,7 +55,7 @@ class AuthorsController < ApplicationController
   def load_author
     @author = Author.find_by id: params[:id]
     return if @author
-    flash[:info] = t "author.controller.load.no_author"
+    flash[:info] = t ".no_author"
     redirect_to signup_path
   end
 end

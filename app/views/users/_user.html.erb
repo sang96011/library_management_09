@@ -1,4 +1,4 @@
 <li>
   <%= link_to user.name, edit_user_path(user) %>
-  <%= button_to t("users.index.make_admin"), {action: "make_admin", id: user.id }, method: :put %><br>
+  <%= button_to t(".make_admin"), {action: "make_admin", id: user.id }, method: :put %><br>
 </li>

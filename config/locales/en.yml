@@ -1,11 +1,13 @@
 en:
   base_title: "Library App"
   layouts:
-    application:
-      title: "Library App"
     footer:
       p: "Library book 2018"
+      about: "About"
+      contact: "Contact"
+      help: "Help"
     header:
+      title: "Library App"
       login: "Log In"
       users: "Users"
       account: "Account"
@@ -15,6 +17,7 @@ en:
       publisher: "Publisher"
       user: "User"
       author: "Author"
+      home: "Home"
   static_pages:
     home:
       title: "Home"
@@ -31,34 +34,30 @@ en:
       title: "About"
       text: "Read for more information"
   users:
+    made_admin: "Assign permission success!"
+    updated: "Update infomation user success!"
+    welcome: "Welcome to the Library App"
+    cant_find: "Can't find user!"
     new:
       title: "Sign Up"
       confirm: "Confirmation"
       create: "Create my account"
-    controller:
-      create:
-        welcome: "Welcome to the Library App"
-      load:
-        no_user: "User not found"
     index:
       all: "All user"
       search: "Search"
-      make_admin: "Make Admin"
       download: "Download:"
       excel: "Excel"
     edit:
       submit: "Save changes"
       update: "Update user"
-  author:
-    controller:
-      create: "Author has been created!"
-      destroy:
-        success: "Author has been deleted"
-        danger: "You can't delete author. Don't ask me why!"
-      load:
-        no_author: "Author invalid"
-      update:
-        success: "Author has been updated"
+    user:
+      make_admin: "Make Admin"
+  authors:
+    created: "Author has been created!"
+    destroy_success: "Author has been deleted"
+    destroy_danger: "You can't delete author. Don't ask me why!"
+    no_author: "Author invalid"
+    updated: "Author has been updated"
     edit:
       title: "Update Author"
       h1: "Update Author's information"
@@ -84,14 +83,18 @@ en:
         one: "1 error"
         other: "%{count} errors"
   session:
+    invalid: "Invalid email/password combination"
+    congrate: "Congratulation!"
     new:
       title: "Log In"
       signup: "Sign up now!"
       newuser: "New user?"
-    controller:
-      invalid: "Invalid email/password combination"
-      congrate: "Congratulation!"
   publishers:
+    cant_find: "Can't find publisher!"
+    created:  "Create publisher success!"
+    deleted: "Delete publisher success!"
+    delete_fail: "Delete publisher fail!"
+    updated: "Update infomation publisher success!"
     index:
       all: "All Publisher"
       new: "New publisher"
@@ -109,11 +112,4 @@ en:
   error:
     one: "The form contains %{count} error"
     other: "The form contains %{count} errors"
-  flash:
-    update_success: "Update infomation success!"
-    create_success:  "Create success!"
-    cant_find: "Can't find data!"
-    delete_success: "Delete success!"
-    delete_fail: "Delete fail!"
-    cant_permit: "You do not have permission!"
-    make_admin: "Assign permission success!"
+  cant_permit: "You do not have permission!"

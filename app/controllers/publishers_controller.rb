@@ -14,7 +14,7 @@ class PublishersController < ApplicationController
 
   def update
     if @publisher.update_attributes(publisher_params)
-      flash[:info] = t "flash.update_success"
+      flash[:info] = t ".updated"
       redirect_to publishers_path
     else
       render :edit
@@ -28,7 +28,7 @@ class PublishersController < ApplicationController
   def create
     @publisher = Publisher.new publisher_params
     if @publisher.save
-      flash[:info] = t "flash.create_success"
+      flash[:info] = t ".created"
       redirect_to publishers_path
     else
       render :new
@@ -37,10 +37,10 @@ class PublishersController < ApplicationController
 
   def destroy
     if @publisher.destroy
-      flash[:info] = t "flash.delete_success"
+      flash[:info] = t ".deleted"
       redirect_to publishers_path
     else
-      flash.now[:danger] = t "flash.delete_fail"
+      flash.now[:danger] = t ".delete_fail"
       render :new
     end
   end
@@ -54,7 +54,7 @@ class PublishersController < ApplicationController
   def load_publisher
     @publisher = Publisher.find_by id: params[:id]
     return if @publisher
-    flash[:danger] = t "flash.cant_find"
+    flash[:danger] = t ".cant_find"
     redirect_to root_path
   end
 end
