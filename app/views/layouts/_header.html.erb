@@ -4,7 +4,7 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t("stactic_pages.home"), root_path %></li>
-        <li><%= link_to t("stactic_pages.about"), about_path %></li>
+        <li><%= link_to t(".user"), users_path %></li>
         <li><%= link_to t("stactic_pages.contact"), contact_path %></li>
         <li><%= link_to t(".publisher"), publishers_path %></li>
         <% if logged_in? %>

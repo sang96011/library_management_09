@@ -13,6 +13,7 @@ en:
       setting: "Settings"
       logout: "Log out"
       publisher: "Publisher"
+      user: "User"
   static_pages:
     home:
       title: "Home"
@@ -40,6 +41,9 @@ en:
         no_user: "User not found"
     index:
       all: "All user"
+    edit:
+      submit: "Save changes"
+      update: "Update user"
   author:
     controller:
       create: "Author has been created!"

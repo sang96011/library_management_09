@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  def show
-    @user = User.find_by(params[:id])
-  end
+  before_action :load_user, except: [:index, :new, :create]
+  def show; end
 
   def new
     @user = User.new
@@ -20,6 +19,14 @@ class UsersController < ApplicationController
   def index
     @users = User.newest.paginate(page: params[:page],
       per_page: Settings.user.index.per_page)
+  end
+
+  def edit; end
+
+  def update
+    return render :edit unless @user.update_attributes user_params
+    flash[:success] = t "flash.update_success"
+    redirect_to users_path
   end
 
   private
