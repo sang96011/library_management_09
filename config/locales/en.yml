@@ -42,6 +42,8 @@ en:
         no_user: "User not found"
     index:
       all: "All user"
+      search: "Search"
+      make_admin: "Make Admin"
       download: "Download:"
       excel: "Excel"
     edit:
@@ -113,4 +115,5 @@ en:
     cant_find: "Can't find data!"
     delete_success: "Delete success!"
     delete_fail: "Delete fail!"
-    cant_permit: "You do not have permission to view"
+    cant_permit: "You do not have permission!"
+    make_admin: "Assign permission success!"

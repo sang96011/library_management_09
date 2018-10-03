@@ -10,7 +10,11 @@ class User < ApplicationRecord
 
   before_save{email.downcase!}
 
+  scope :search, -> query {where("name LIKE ?", "%#{query}%") if query.present?}
   scope :newest, ->{order created_at: :DESC}
+  scope :_page, -> page do
+    paginate(page: page, per_page: Settings.publisher.per_page)
+  end
 
   def self.to_xls options = {}
     CSV.generate(options) do |csv|

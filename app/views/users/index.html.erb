@@ -1,6 +1,10 @@
 <% provide :title, t(".all") %>
 <h1><%= t ".all" %></h1>
 <ul class="users">
+  <%= form_tag users_path, method: :get do %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag t(".search"), name: nil %>
+  <% end %>
   <%= render @users %>
   <%= will_paginate %>
 </ul>

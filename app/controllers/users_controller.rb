@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :load_user, except: [:index, :new, :create]
+  before_action :admin?, only: :make_admin
+
   def show; end
 
   def new
@@ -17,8 +19,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.newest.paginate(page: params[:page],
-      per_page: Settings.user.index.per_page)
+    @users = User.search(params[:query]).newest._page params[:page]
     respond_to do |format|
       format.html
       format.xls{send_data @users.to_xls}
@@ -38,6 +39,12 @@ class UsersController < ApplicationController
   def update
     return render :edit unless @user.update_attributes user_params
     flash[:success] = t "flash.update_success"
+    redirect_to users_path
+  end
+
+ def make_admin
+    @user.update_attribute(:admin, true)
+    flash[:success] = t "flash.make_admin"
     redirect_to users_path
   end
 
