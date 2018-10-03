@@ -3,6 +3,10 @@ class AuthorsController < ApplicationController
 
   def index
     @authors = Author.search(params[:search])._page params[:page]
+    respond_to do |format|
+      format.html
+      format.xls{send_data @authors.to_xls}
+    end
   end
 
   def show; end

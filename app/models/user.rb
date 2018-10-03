@@ -12,6 +12,15 @@ class User < ApplicationRecord
 
   scope :newest, ->{order created_at: :DESC}
 
+  def self.to_xls options = {}
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |user|
+        csv << user.attributes.values_at(*column_names)
+      end
+    end
+  end
+
   validates :name, presence: true,
     length: {maximum: Settings.user.name.max_length}
   validates :email, presence: true,

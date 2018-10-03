@@ -19,6 +19,18 @@ class UsersController < ApplicationController
   def index
     @users = User.newest.paginate(page: params[:page],
       per_page: Settings.user.index.per_page)
+    respond_to do |format|
+      format.html
+      format.xls{send_data @users.to_xls}
+    end
+  end
+
+  def edit; end
+
+  def update
+    return render :edit unless @user.update_attributes user_params
+    flash[:success] = t "flash.update_success"
+    redirect_to users_path
   end
 
   def edit; end
