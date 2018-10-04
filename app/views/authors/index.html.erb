@@ -1,12 +1,12 @@
-<% provide :title, t("author.index.title") %>
-<h1><%= t "author.index.title" %></h1>
+<% provide :title, t(".title") %>
+<h1><%= t ".title" %></h1>
 <div class="container">
   <div class="input-group">
     <%= form_tag(authors_path, method: :get) do %>
       <%= text_field_tag :search, params[:search],
-        placeholder: t("author.index.search"), class: "form-control" %>
+        placeholder: t(".search"), class: "form-control" %>
       <span class="input-group-btn">
-        <%= submit_tag t("author.index.search"), name: nil,
+        <%= submit_tag t(".search"), name: nil,
           class: "btn btn-default" %>
       </span>
     <% end %>
@@ -16,14 +16,14 @@
     <li>
       <%= link_to author.name, edit_author_url(author) %> |
       <%= author.content %>
-    | <%= link_to t("author.index.delete"),
-        author, method: :delete, data: {confirm: t("author.index.confirm")} %>
+    | <%= link_to t(".delete"),
+        author, method: :delete, data: {confirm: t(".confirm")} %>
     </li>
   <% end %>
   </ul>
   <%= will_paginate %>
 </div>
 
-<%= t "author.index.download" %>
-<%= link_to t("author.index.excel"), authors_path(format: "xls") %>
+<%= t ".download" %>
+<%= link_to t(".excel"), authors_path(format: "xls") %>
 

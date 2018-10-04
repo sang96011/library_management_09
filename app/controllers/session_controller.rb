@@ -5,10 +5,10 @@ class SessionController < ApplicationController
     user = User.find_by email: params[:session][:email].downcase
     if user && user.authenticate(params[:session][:password])
       log_in user
-      flash[:info] = t("session.controller.congrate")
+      flash[:info] = t(".congrate")
       redirect_to root_path
     else
-      flash.now[:danger] = t("session.controller.invalid")
+      flash.now[:danger] = t(".invalid")
       render :new
     end
   end

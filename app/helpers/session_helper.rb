@@ -18,7 +18,7 @@ module SessionHelper
 
   def admin?
     unless logged_in? && @current_user.admin
-      flash[:danger] = t "flash.cant_permit"
+      flash[:danger] = t "cant_permit"
       redirect_to root_path
     end
   end

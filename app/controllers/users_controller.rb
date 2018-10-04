@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :load_user, except: [:index, :new, :create]
+  before_action :admin?, only: :make_admin
+
   def show; end
 
   def new
@@ -9,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      flash[:info] = t "users.controller.create.welcome"
+      flash[:info] = t ".welcome"
       redirect_to root_url
     else
       render :new
@@ -17,8 +19,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.newest.paginate(page: params[:page],
-      per_page: Settings.user.index.per_page)
+    @users = User.search(params[:query]).newest._page params[:page]
     respond_to do |format|
       format.html
       format.xls{send_data @users.to_xls}
@@ -29,15 +30,13 @@ class UsersController < ApplicationController
 
   def update
     return render :edit unless @user.update_attributes user_params
-    flash[:success] = t "flash.update_success"
+    flash[:success] = t ".updated"
     redirect_to users_path
   end
 
-  def edit; end
-
-  def update
-    return render :edit unless @user.update_attributes user_params
-    flash[:success] = t "flash.update_success"
+  def make_admin
+    @user.update_attribute(:admin, true)
+    flash[:success] = t ".made_admin"
     redirect_to users_path
   end
 
@@ -50,7 +49,7 @@ class UsersController < ApplicationController
   def load_user
     @user = User.find_by id: params[:id]
     return if @user
-    flash[:info] = t "users.controller.load.no_user"
+    flash[:info] = t ".cant_find"
     redirect_to signup_path
   end
 end
