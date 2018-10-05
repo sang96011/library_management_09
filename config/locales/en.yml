@@ -103,7 +103,11 @@ en:
       success: "Your book has been deleted"
       danger: "You can't delete book. Don't ask me why!"
     book_row:
-      num_page: "Number page: "
+      category: "Category: %{category}"
+      author: "Author: %{author}"
+      publisher: "Publisher: %{publisher}"
+      status: "Status: %{status}"
+      num_page: "Number page: %{num_page}"
       borrow: "Borrow"
     index:
       search: "Search"
