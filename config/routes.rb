@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     end
   end
   resources :books do
+    resources :user_reviews
     member do
       get :like, :unlike
       get :follow, :unfollow

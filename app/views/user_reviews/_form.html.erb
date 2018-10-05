@@ -1,0 +1,16 @@
+<%= form_for([@book, user_review]) do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div id="rating-form">
+      <label><%= t ".rating" %></label>
+  </div>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+  <%= f.button :submit, class: "btn-custom2" %>
+<% end %>
+
+<script src="/assets/rating.js"></script>

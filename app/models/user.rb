@@ -69,4 +69,7 @@ class User < ApplicationRecord
     follows.find_by target_id: book.id
   end
 
+  def review? book
+    user_reviews.find_by book_id: book. id
+  end
 end

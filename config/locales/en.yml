@@ -107,7 +107,7 @@ en:
       add: "Add to Cart"
     index:
       search: "Search"
-      title: "All Books"
+      title: "Borrow Books"
       content: "You can find all the book here"
     show:
       title: "Book"
@@ -119,7 +119,12 @@ en:
       publisher: "Publisher: "
       numberpage: "Number page: "
       content: "Content: "
+      comments: "Comments"
+      reviews: "Reviews"
       fail: "Comment failled"
+      write_review: "Write review"
+      close: "Close"
+      no_review: "No have review!"
     new:
       title: "New Book"
       back: "Back"
@@ -287,3 +292,22 @@ en:
       plz1: "There are no details in your shopping cart.  Please "
       plz2: "and add some details to your cart."
       confirm: "Confirm"
+
+  user_reviews:
+    created: "Write review success!"
+    create_fail: "Write review fail!"
+    edited: "Edit review success!"
+    deleted: "Delete review success!"
+    delete_fail: "Delete review fail!"
+    no_found_book: "Can't found book"
+    no_found_review: "Can't found review"
+    new:
+      title: "New Review"
+    edit:
+      title: "Edit Review"
+    form:
+      rating: "Rating"
+    user_review:
+      edit: "Edit"
+      delete: "Delete"
+      confirm: "Are you sure?"

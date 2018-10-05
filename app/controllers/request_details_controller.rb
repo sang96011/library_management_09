@@ -19,8 +19,10 @@ class RequestDetailsController < ApplicationController
     @request_detail.update_attributes request_detail_params
     if @request_detail.update_attributes request_detail_params
       flash[:info] = t ".updated"
+      redirect_back fallback_location: root_path
     else
       flash[:danger] = t ".update_fail"
+      redirect_back fallback_location: root_path
     end
   end
 
