@@ -1,0 +1,11 @@
+<%= form_for current_request do |f| %>
+  <%= render "shared/error_messages", object: f.object%>
+
+  <%= f.label :from_day %>
+  <%= f.date_field :from_day, class: "form-control" %>
+
+  <%= f.label :to_day %>
+  <%= f.date_field :to_day, class: "form-control" %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

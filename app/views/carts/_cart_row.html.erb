@@ -1,0 +1,26 @@
+<div class="well">
+
+  <div class="row">
+    <div class="col-xs-8">
+      <h4><%= book.name %></h4>
+    </div>
+    <div class="col-xs-4">
+
+      <%= form_for request_detail do |f| %>
+        <div class="row">
+          <div class="col-xs-4">
+            <%= f.number_field :number, value: request_detail.number, class: "form-control", min: 1 %>
+            <%= f.hidden_field :book_id, value: book.id %>
+          </div>
+          <div class="col-xs-8 text-right">
+            <div class="btn-group">
+              <%= f.submit t(".update"), class: "btn btn-primary" %>
+              <%= link_to t(".delete"), request_detail, { data: { confirm: t(".confirm", name: request_detail.book.name) }, method: :delete, class: "btn btn-danger" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

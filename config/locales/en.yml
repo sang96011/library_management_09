@@ -1,5 +1,6 @@
 en:
   base_title: "Library App"
+
   layouts:
     footer:
       p: "Library book 2018"
@@ -18,6 +19,7 @@ en:
       user: "User"
       author: "Author"
       home: "Home"
+
   static_pages:
     home:
       title: "Home"
@@ -33,6 +35,7 @@ en:
     about:
       title: "About"
       text: "Read for more information"
+
   users:
     made_admin: "Assign permission success!"
     updated: "Update infomation user success!"
@@ -61,6 +64,7 @@ en:
     following: "Following"
     name: "Name"
     no_user: "Can not find user!"
+
   authors:
     update: "Update"
     name: "Name"
@@ -87,6 +91,7 @@ en:
       search: "Search"
       download: "Download:"
       excel: "Excel"
+
   books:
     name: "Name"
     author: "Author"
@@ -97,10 +102,13 @@ en:
     destroy:
       success: "Your book has been deleted"
       danger: "You can't delete book. Don't ask me why!"
+    book_row:
+      num_page: "Number page: "
+      add: "Add to Cart"
     index:
+      search: "Search"
       title: "All Books"
       content: "You can find all the book here"
-      search: "Search"
     show:
       title: "Book"
       edit: "Edit"
@@ -126,12 +134,14 @@ en:
       year: "Book was published in..."
       number_page: "How many page book has?"
       status: "Plz fill in the status of book!"
+
   shared:
     error:
       the_form_contain: "The form contains"
       error_count:
         one: "1 error"
         other: "%{count} errors"
+
   session:
     invalid: "Invalid email/password combination"
     congrate: "Congratulation!"
@@ -139,6 +149,7 @@ en:
       title: "Log In"
       signup: "Sign up now!"
       newuser: "New user?"
+
   publishers:
     cant_find: "Can't find publisher!"
     created:  "Create publisher success!"
@@ -161,26 +172,34 @@ en:
       confirm: "You sure?"
       address: "Address"
       name: "Name"
+
   error:
     one: "The form contains %{count} error"
     other: "The form contains %{count} errors"
+
   cant_permit: "You do not have permission!"
+
   comment:
     commented: "Comment successfullly added"
     failed: "Comment failled added"
     title: "Comments:"
     new: "New Comment"
     fill: "Please enter a comment"
+
   relationship:
     danger: "You haven't logged in"
+
   application:
     login: "Please log in!"
+
   like:
     success: "You liked this book"
     fail: "Like failled"
+
   unlike:
     success: "Unliked this book"
     fail: "Unlike failled"
+
   show_like: "Can not show. I don't know reason. Please don't ask me why"
 
   follow:
@@ -218,3 +237,53 @@ en:
       delete_fail: "Delete fail"
     load_category:
       no_category: "Can't found category"
+
+  requests:
+    created: "Create request success!"
+    create_fail: "Create request fail!"
+    deleted: "Delete success"
+    delete_fail: "Delete fail"
+    no_request: "You don't have any request!"
+    no_detail: "Don't have request detail!"
+    accept_success: "Accept success"
+    accept_fail: "Accept fail!"
+    cant_find: "Can not found request"
+    index:
+      all: "All request"
+    show:
+      id: "ID: %{id}"
+      name: "Book: %{name}"
+      number: "Number: %{number}"
+    new:
+      title: "Borrow book"
+      create: "Create request"
+    edit:
+      title: "Create Request"
+    request:
+      id: "Request: %{id}"
+      from: "From_day: %{from}"
+      to: "To_day: %{to}"
+      total_book: "Total number: %{total_book}"
+      status: "Status: %{status}"
+      confirm: "Confirm"
+      delete: "Delete"
+      accept: "Accept"
+
+  request_details:
+    exist_detail: "You was add this book into cart! Goto Cart to update number if you want"
+    no_detail: "Don't have request detail!"
+    deleted: "Delete success"
+    delete_fail: "Delete fail!"
+    updated: "Update success"
+    update_fail: "Update fail!"
+
+  carts:
+    cart_row:
+      update: "Update"
+      delete: "Delete"
+      confirm: "Are you sure you wish to delete the book '%{name}' from your cart?"
+    shopping_cart:
+      back: "go back"
+      plz1: "There are no details in your shopping cart.  Please "
+      plz2: "and add some details to your cart."
+      confirm: "Confirm"

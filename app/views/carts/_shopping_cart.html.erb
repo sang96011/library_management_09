@@ -1,0 +1,12 @@
+<% if @request_details.size == 0 %>
+  <p class="text-center">
+    <%= t ".plz1"%>
+    <%= link_to t(".back"), root_path %>
+    <%= t ".plz2"%>
+  </p>
+<% else %>
+  <p><%= link_to t(".confirm"), edit_request_path(current_request) %></p>
+  <% @request_details.each do |request_detail| %>
+    <%= render "carts/cart_row", book: request_detail.book, request_detail: request_detail %>
+  <% end %>
+<% end %>

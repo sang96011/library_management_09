@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :follows, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :resquests, dependent: :destroy
+  has_many :requests, dependent: :destroy
   has_many :user_reviews, dependent: :destroy
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :follower_id, dependent: :destroy
@@ -16,9 +16,9 @@ class User < ApplicationRecord
 
   before_save{email.downcase!}
 
-  scope :search, ->(query){where("name LIKE ?", "%#{query}%") if query.present?}
+  scope :search, -> query {where("name LIKE ?", "%#{query}%") if query.present?}
   scope :newest, ->{order created_at: :DESC}
-  scope :_page, ->(page) do
+  scope :_page, -> page do
     paginate(page: page, per_page: Settings.publisher.per_page)
   end
 
