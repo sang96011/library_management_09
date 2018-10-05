@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   before_action :load_request, only: [:destroy, :accept_request]
 
   def show
-    @request_details = RequestDetail.where request_id: params[:id]
+    @request_details = RequestDetail.of_request(params[:id])
     if @request_details.blank?
       flash[:info] = t ".no_detail"
       redirect_to root_path
@@ -21,7 +21,12 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests = Request.where user_id: current_user.id
+    if current_user.admin?
+      @requests = Request.newest
+    else
+      @requests = Request.of_user(current_user.id).newest
+    end
+
     if @requests.blank?
       flash[:info] = t ".no_request"
       redirect_back fallback_location: root_path

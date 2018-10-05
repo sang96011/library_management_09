@@ -1,1 +1,2 @@
-$("#button").html("<%= escape_javascript(render('follows/unfollow')) %>");
+$("#notice").html("<%= flash[:notice] %>");
+$("#button_follow").html("<%= escape_javascript(render('follows/unfollow')) %>");

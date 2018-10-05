@@ -1,5 +1,4 @@
 class FollowsController < ApplicationController
-
   before_action :load_book
 
   def index
@@ -13,18 +12,18 @@ class FollowsController < ApplicationController
   def create
     @follow = current_user.follows.build target: @book
     if @follow.save
-      load_respond "success", t("follow.success")
+      flash[:notice] = t ".followed"
     else
-      load_respond "danger", t("follow.fail")
+      flash[:notice] = t ".follow_fail"
     end
   end
 
   def destroy
     follow = Follow.find_by(target_id: params[:id], user_id: current_user)
     if follow && follow.destroy
-      load_respond "success", t("unfollow.success")
+      flash[:notice] = t ".unfollowed"
     else
-      load_respond "danger", t("unfollow.fail")
+      flash[:notice] = t ".unfollow_fail"
     end
   end
 
@@ -37,17 +36,9 @@ class FollowsController < ApplicationController
   private
 
   def load_book
-    @book = Book.find_by id: params[:book_id]
+    @book = Book.find_by id: params[:id]
     return if @book
     flash[:info] = t "books.no_book"
     redirect_to books_path
-  end
-
-  def load_respond type, message
-    respond_to do |format|
-      flash[type] = message
-      format.html{redirect_to @book.target}
-      format.js
-    end
   end
 end

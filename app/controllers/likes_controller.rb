@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   before_action :load_book
+
   def index
     @likes = Like.all
   end
@@ -9,37 +10,21 @@ class LikesController < ApplicationController
   end
 
   def create
-    @like = current_user.likes.build target: @book
-    if @like.save
-      respond_to do |format|
-        flash[:success] = t "like.success"
-        format.html{redirect_to @book.target}
-        format.js
-      end
+    if  current_user.like? @book
+      flash[:notice] = t ".was_liked_book"
+    elsif current_user.likes.build(target: @book).save
+      flash[:notice] = t ".liked_book"
     else
-      respond_to do |format|
-        flash[:danger] = t "like.fail"
-        format.html{redirect_to @book.target}
-        format.js
-      end
+      flash[:notice] = t ".like_fail_book"
     end
   end
 
   def destroy
     like = Like.find_by(target: @book, user_id: current_user.id)
-    if like
-      like.destroy
-      respond_to do |format|
-        flash[:success] = t "unlike.success"
-        format.html{redirect_to @book.target}
-        format.js
-      end
+    if like&.destroy
+      flash[:notice] = t ".unliked_book"
     else
-      respond_to do |format|
-        flash[:danger] = t "unlike.fail"
-        format.html{redirect_to @book.target}
-        format.js
-      end
+      flash[:notice] = t ".unlike_fail"
     end
   end
 
@@ -52,7 +37,7 @@ class LikesController < ApplicationController
   private
 
   def load_book
-    @book = Book.find_by id: params[:book_id]
+    @book = Book.find_by id: params[:id]
     return if @book
     flash[:info] = t "books.no_book"
     redirect_to books_path

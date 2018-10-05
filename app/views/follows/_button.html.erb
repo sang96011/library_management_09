@@ -1,9 +1,7 @@
-<div class="row" id="button">
-  <div class="col-md-2 col-md-offset-10">
-    <% if current_user.follow?(@book) %>
-      <%= render "follows/unfollow" %>
-    <% else %>
-      <%= render "follows/follow" %>
-    <% end %>
-  </div>
+<div class="row" id="button_follow">
+  <% if current_user.follow?(@book) %>
+    <%= render "follows/unfollow" %>
+  <% else %>
+    <%= render "follows/follow" %>
+  <% end %>
 </div>

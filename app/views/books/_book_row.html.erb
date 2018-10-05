@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-xs-8">
       <h4><%= link_to book.name, book %></small></h4>
-      <h4 class="text-right"><%= t ".num_page"%><span style="color: green"><%= book.number_page %></span></h4>
+      <h4><%= book.author_name %></small></h4>
+      <h4><%= t ".num_page"%><span style="color: green"><%= book.number_page %></span></h4>
     </div>
     <div class="col-xs-4">
       <%= form_for request_detail do |f| %>
@@ -10,7 +11,7 @@
           <%= f.number_field :number, value: 1, class: "form-control", min: 1 %>
           <div class="input-group-btn">
             <%= f.hidden_field :book_id, value: book.id %>
-            <%= f.submit t(".add"), class: "btn btn-primary" %>
+            <%= f.submit t(".borrow"), class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>

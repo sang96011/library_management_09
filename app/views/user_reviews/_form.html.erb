@@ -1,4 +1,4 @@
-<%= form_for([@book, user_review]) do |f| %>
+<%= form_for([@book, user_review], remote: true) do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <div id="rating-form">
       <label><%= t ".rating" %></label>

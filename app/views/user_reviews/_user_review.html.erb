@@ -5,7 +5,25 @@
   <%= user_review.content %>
     <% if user_review.user_id == current_user.id %>
       <div class="links btn-group">
-        <%= link_to t(".edit"), edit_book_user_review_path(user_review.book, user_review), class: "btn btn-custom" %>
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
+        <%= t ".edit" %>
+      </button>
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><%= t ".write_review" %></h4>
+            </div>
+            <div class="modal-body">
+              <%= render  partial: "user_reviews/form", locals: {user_review: user_review} %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal"><%= t ".close" %></button>
+            </div>
+          </div>
+        </div>
+      </div>
         <%= link_to t(".delete"), book_user_review_path(user_review.book, user_review), class: "btn btn-custom", method: :delete, data: { confirm: t(".confirm") } %>
       </div>
   <% end %>
