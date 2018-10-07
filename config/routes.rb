@@ -18,7 +18,12 @@ Rails.application.routes.draw do
   resources :authors
   resources :publishers
   put "admin/:id", to: "users#make_admin", as: "make_admin"
-  resources :books
+  resources :books do
+    member do
+      get :like, :unlike
+    end
+  end
   resources :comments
   resources :relationships, only: [:create, :destroy]
+  resources :likes
 end

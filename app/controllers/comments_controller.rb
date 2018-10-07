@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-   before_action :load_book, except: [:index, :create, :new]
+  before_action :load_book, except: [:index, :create, :new]
 
   def index
     @comments = Comment.all
@@ -15,20 +15,22 @@ class CommentsController < ApplicationController
     if @comment.save
       respond_to do |format|
         flash[:success] = t "comment.commented"
-          format.html {redirect_to @comment.target}
-          format.js
-        end
+        format.html{redirect_to @comment.target}
+        format.js
+      end
     else
       respond_to do |format|
         flash[:danger] = t "comment.failed"
-          format.html {redirect_to @comment.target}
-          format.js
+        format.html{redirect_to @comment.target}
+        format.js
       end
     end
   end
 
   def show
     @comment = Comment.find_by id: params[:id]
+    return if @comment
+    flash[:danger] = t "books.fail"
   end
 
   def destroy; end
@@ -42,7 +44,7 @@ class CommentsController < ApplicationController
   def load_book
     @book = Book.find_by id: params[:id]
     return if @book
-      flash[:info] = t "book.no_book"
-      redirect_to books_path
+    flash[:info] = t "books.no_book"
+    redirect_to books_path
   end
 end

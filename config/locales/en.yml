@@ -50,13 +50,17 @@ en:
     edit:
       submit: "Save changes"
       update: "Update user"
+    show:
+      make_admin: "Make admin"
     user:
       make_admin: "Make Admin"
       view_profile: "View my profile"
+      edit: "Edit"
     follow: "Follow"
     unfollow: "Unfollow"
     following: "Following"
     name: "Name"
+    no_user: "Can not find user!"
 
   authors:
     update: "Update"
@@ -108,6 +112,7 @@ en:
       publisher: "Publisher: "
       numberpage: "Number page: "
       content: "Content: "
+      fail: "Comment failled"
     new:
       title: "New Book"
       back: "Back"
@@ -155,6 +160,8 @@ en:
     publisher:
       delete: "Delete"
       confirm: "You sure?"
+      address: "Address"
+      name: "Name"
   error:
     one: "The form contains %{count} error"
     other: "The form contains %{count} errors"
@@ -176,3 +183,10 @@ en:
     danger: "You haven't logged in"
   application:
     login: "Please log in!"
+  like:
+    success: "You liked this book"
+    fail: "Like failled"
+  unlike:
+    success: "Unliked this book"
+    fail: "Unlike failled"
+  show_like: "Can not show. I don't know reason. Please don't ask me why"

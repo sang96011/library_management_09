@@ -37,10 +37,15 @@ class AuthorsController < ApplicationController
   end
 
   def destroy
-    if @author.destroy
-      flash[:success] = t ".destroy_success"
-      redirect_to authors_path
-    else
+    begin
+      if @author.destroy
+        flash[:success] = t ".destroy_success"
+        redirect_to authors_path
+      else
+        flash[:danger] = t ".destroy_danger"
+        redirect_to root_path
+      end
+    rescue Exception => e
       flash[:danger] = t ".destroy_danger"
       redirect_to root_path
     end

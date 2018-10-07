@@ -4,10 +4,10 @@
       <tr>
         <th class="active" width="30%"><%= t "users.name" %></th>
         <td class="text-center active" width="40%">
-          <%= link_to user.name, edit_user_path(user) %>
+          <%= link_to user.name, user_path(user) %>
         </td>
         <td class="text-right active">
-          <%= link_to t("user.view_profile"), @user %>
+          <%= link_to t(".edit"), edit_user_path(user) %>
         </td>
       </tr>
     </table>

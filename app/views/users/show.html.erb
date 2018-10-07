@@ -14,5 +14,12 @@
   <div class="col-md-2">
     <%= render "follow_form" if logged_in? %>
   </div>
+
 </div>
-<%= button_to t(".make_admin"), {action: "make_admin", id: user.id }, method: :put
+<br>
+<div class="row">
+  <div class="col-md-2">
+    <%= button_to t(".make_admin"), {action: "make_admin", id: @user.id }, method: :put, class: "btn btn-primary" %>
+  </div>
+</div>
+

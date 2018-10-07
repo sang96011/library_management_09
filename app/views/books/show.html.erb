@@ -9,6 +9,7 @@
   </dl>
 
   <dt><%= t(".content") %></dt><p class="text-justify"><%= @book.content %></p><br>
+  <%= render partial: "likes/button", locals: { book: @book } %>
   <%= render partial: "comments/form", locals: {object: @book} %>
 
   <dd><%= render @comment %></dd><br>

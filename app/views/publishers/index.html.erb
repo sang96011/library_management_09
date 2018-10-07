@@ -1,19 +1,22 @@
 <%= provide :title, t(".all") %>
 <h1><%= t(".all") %></h1>
-
-
-
-
-
-<ul class="users">
-  <%= form_tag publishers_path, method: :get do %>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag t(".search"), name: nil %>
-  <% end %>
-  <%= link_to t(".new"), new_publisher_path, class: "btn btn-primary" %>
-  <%= render @publishers %>
-</ul>
-
+<div class= "form-inline">
+  <div class="input-group">
+    <%= form_tag publishers_path, method: :get do %>
+      <%= text_field_tag :query, params[:query],
+        placeholder: t(".search"), class: "form-control" %>
+      <span class="input-group-btn">
+      <%= submit_tag t(".search"), name: nil,
+        class: "btn btn-primary" %><i class="fa fa-search fa-fw"></i>
+      </span>
+    <% end %>
+  </div>
+</div><br>
 <%= t(".download") %>
-<%= link_to t(".excel"), publishers_path(format: "xls") %>
+<%= link_to t(".excel"), publishers_path(format: "xls") %><br>
+<%= link_to t(".new"), new_publisher_path, class: "btn btn-primary" %><hr>
+<%= render @publishers %>
+<%= will_paginate %>
+
+
 

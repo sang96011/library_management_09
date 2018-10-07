@@ -6,10 +6,10 @@ class Book < ApplicationRecord
   has_many :user_reviews, dependent: :destroy
   has_many :comments, as: :target, dependent: :destroy
   has_many :follows, as: :target, dependent: :destroy
+  has_many :likes, as: :target, dependent: :destroy
 
-
-  scope :search, -> search {where("name LIKE ?", "%#{search}%") if search}
-  scope :_page, -> page do
+  scope :search, ->(search){where("name LIKE ?", "%#{search}%") if search}
+  scope :_page, ->(page) do
     paginate(page: page, per_page: Settings.book.index.per_page)
   end
 
@@ -21,5 +21,4 @@ class Book < ApplicationRecord
   delegate :name, to: :author, prefix: :author
   delegate :name, to: :publisher, prefix: :publisher
   delegate :name, to: :category, prefix: :category
-
 end

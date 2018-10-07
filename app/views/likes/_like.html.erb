@@ -1,0 +1,3 @@
+<%# if current_user.like?(@book) %>
+  <%= button_to "Like", likes_path(book_id: @book.id), remote: true, method: :post %>
+<%# end %>

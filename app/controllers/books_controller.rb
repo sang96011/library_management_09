@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
-   before_action :find_book, except: [:new, :create, :index]
-   before_action :load_all, only: [:new, :edit]
+  before_action :find_book, except: [:new, :create, :index]
+  before_action :load_all, only: [:new, :edit]
   def index
     @books = Book.search(params[:search])._page params[:page]
   end
@@ -8,17 +8,17 @@ class BooksController < ApplicationController
   def show
     @comment = Comment.where(target: @book)
     @new_comment = Comment.new
+    @like = Like.where(target: @book)
   end
 
   def new
     @book = Book.new
     @comment = Comment.new
+    @like = Like.new
   end
 
   def create
-    byebug
     @book = Book.new book_params
-
     if @book.save
       flash[:success] = t "books.created"
       redirect_to books_path
@@ -48,18 +48,18 @@ class BooksController < ApplicationController
     end
   end
 
-private
+  private
 
   def book_params
     params.require(:book).permit :content, :name, :author_id, :publisher_id,
-     :number_page, :year, :status, :category_id, :search
+      :number_page, :year, :status, :category_id, :search
   end
 
   def find_book
     @book = Book.find_by id: params[:id]
     return if @book
-      flash[:info] = t "books.no_book"
-      redirect_to books_path
+    flash[:info] = t "books.no_book"
+    redirect_to books_path
   end
 
   def load_all
@@ -67,5 +67,4 @@ private
     @author = Author.all
     @publisher = Publisher.all
   end
-
 end

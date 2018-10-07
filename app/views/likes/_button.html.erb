@@ -1,0 +1,10 @@
+
+
+  <div id="button">
+  <% if current_user.like?(@book) %>
+  <%# if current_user.like?(@book) %>
+    <%= render "likes/unlike" %>
+  <% else %>
+    <%= render "likes/like" %>
+  <% end %>
+  </div>
