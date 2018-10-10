@@ -21,9 +21,11 @@ Rails.application.routes.draw do
   resources :books do
     member do
       get :like, :unlike
+      get :follow, :unfollow
     end
   end
   resources :comments
   resources :relationships, only: [:create, :destroy]
   resources :likes
+  resources :follows
 end

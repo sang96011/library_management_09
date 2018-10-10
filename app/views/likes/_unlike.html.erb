@@ -1,3 +1,1 @@
-<%# if current_user.like?(@book) %>
-  <%= button_to "Unlike", like_path(book_id: @book.id), remote: true, method: :delete  %>
-<%# end %>
+<%= button_to "Unlike", like_path(book_id: @book.id), remote: true, method: :delete,  class: "btn-primary"  %>

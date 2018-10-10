@@ -9,12 +9,14 @@ class BooksController < ApplicationController
     @comment = Comment.where(target: @book)
     @new_comment = Comment.new
     @like = Like.where(target: @book)
+    @follow = Follow.where(target: @book)
   end
 
   def new
     @book = Book.new
     @comment = Comment.new
     @like = Like.new
+    @follow = Follow.new
   end
 
   def create
