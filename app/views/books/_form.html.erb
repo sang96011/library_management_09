@@ -1,0 +1,30 @@
+<%= form_for @book do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <%= f.collection_select :category_id, @category, :id, :name,
+    {prompt: t(".choose")} %><br>
+
+  <%= f.label :name %><br>
+  <%= f.text_field :name, placeholder: t(".type") %><br>
+
+  <%= f.collection_select :author_id, @author, :id, :name,
+    {prompt: t(".author")} %><br>
+
+  <%= f.collection_select :publisher_id, @publisher, :id, :name,
+   {prompt: t(".publisher")} %><br>
+
+  <%= f.label :year %><br>
+  <%= f.text_field :year, placeholder: t(".year") %><br>
+
+  <%= f.label :number_page %><br>
+  <%= f.text_field :number_page, placeholder: t(".number_page") %><br>
+
+  <%= f.label :status %><br>
+  <%= f.text_field :status, placeholder: t(".status") %><br>
+
+  <%= f.label :content %><br>
+  <%= f.text_area :content, :cols => Settings.book.cols,
+    :rows => Settings.book.rows, placeholder: t(".type2") %><br>
+
+  <%= f.submit %>
+<% end %>

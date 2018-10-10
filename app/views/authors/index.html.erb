@@ -1,29 +1,59 @@
 <% provide :title, t(".title") %>
 <h1><%= t ".title" %></h1>
-<div class="container">
+<div class= "form-inline">
   <div class="input-group">
     <%= form_tag(authors_path, method: :get) do %>
-      <%= text_field_tag :search, params[:search],
-        placeholder: t(".search"), class: "form-control" %>
-      <span class="input-group-btn">
-        <%= submit_tag t(".search"), name: nil,
-          class: "btn btn-default" %>
-      </span>
+    <%= text_field_tag :search, params[:search],
+    placeholder: t(".search"), class: "form-control" %>
+    <span class="input-group-btn">
+      <%= submit_tag t(".search"), name: nil,
+        class: "btn btn-primary" %><i class="fa fa-search fa-fw"></i>
+    </span>
     <% end %>
   </div>
-  <ul class="author">
-  <% @authors.each do |author| %>
-    <li>
-      <%= link_to author.name, edit_author_url(author) %> |
-      <%= author.content %>
-    | <%= link_to t(".delete"),
-        author, method: :delete, data: {confirm: t(".confirm")} %>
-    </li>
-  <% end %>
-  </ul>
-  <%= will_paginate %>
+</div>
+<br>
+<div>
+  <%= t ".download" %>
+  <%= link_to t(".excel"), authors_path(format: "xls") %>
+</div><br>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th class="active" width="30%"><%= t "authors.name" %></th>
+        <th class="text-center active" width="40%"><%= t "authors.update" %></th>
+        <th class="text-right active"><%= t "authors.delete" %></th>
+      </tr>
+    </table>
+  </div>
 </div>
 
-<%= t ".download" %>
-<%= link_to t(".excel"), authors_path(format: "xls") %>
+
+<% @authors.each do |author| %>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <tr>
+          <td class="active" width="30%">
+            <%= link_to author.name, edit_author_url(author) %>
+          </td>
+          <td class="text-center active" width="40%">
+            <%= author.content %>
+          </td>
+          <td class="text-right active">
+            <%= link_to t(".delete"),
+              author, method: :delete, data: {confirm: t(".confirm")} %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+<% end %>
+
+<%= will_paginate %>
+
+
+
 

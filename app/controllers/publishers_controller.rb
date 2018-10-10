@@ -36,13 +36,19 @@ class PublishersController < ApplicationController
   end
 
   def destroy
-    if @publisher.destroy
-      flash[:info] = t ".deleted"
+    begin
+      if @publisher.destroy
+        flash[:info] = t ".deleted"
+        redirect_to publishers_path
+      else
+        flash[:danger] = t ".delete_fail"
+        redirect_to publishers_path
+      end
+    rescue Exception => e
+      flash[:danger] = t ".delete_fail"
       redirect_to publishers_path
-    else
-      flash.now[:danger] = t ".delete_fail"
-      render :new
     end
+
   end
 
   private
