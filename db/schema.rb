@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(version: 20181005020251) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "user_id"
-    t.datetime "from_day"
-    t.datetime "to_day"
+    t.datetime "from_day", default: "2018-10-10 14:09:58"
+    t.datetime "to_day", default: "2018-10-17 14:09:58"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

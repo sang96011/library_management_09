@@ -1,0 +1,6 @@
+<% @request_details .each do |request_detail| %>
+  <hr>
+  <%= t(".id", id: request_detail.id) %><br>
+  <%= t(".name", name: request_detail.book.name) %><br>
+  <%= t(".number", number: request_detail.number) %>
+<% end %>

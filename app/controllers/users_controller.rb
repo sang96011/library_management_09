@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by id: params[:id]
     return if @user
-    flash [:danger] = t "users.no_user"
+    flash[:danger] = t "users.no_user"
   end
 
   def new

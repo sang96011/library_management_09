@@ -3,6 +3,7 @@
     <%= link_to t(".title"), root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to  "#{current_request.request_details.size}", cart_path, class: "badge" %><li>
         <li><%= link_to t(".home"), root_path %></li>
         <li><%= link_to t(".book"), books_path %></li>
         <li><%= link_to t(".user"), users_path %></li>

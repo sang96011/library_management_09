@@ -1,8 +1,10 @@
 class BooksController < ApplicationController
   before_action :find_book, except: [:new, :create, :index]
   before_action :load_all, only: [:new, :edit]
+
   def index
     @books = Book.search(params[:search])._page params[:page]
+    @request_detail = current_request.request_details.new
   end
 
   def show
@@ -14,7 +16,7 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    @comment = Comment.new
+    @new_comment = Comment.new
     @like = Like.new
     @follow = Follow.new
   end
