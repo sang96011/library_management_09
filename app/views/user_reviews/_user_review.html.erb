@@ -1,0 +1,13 @@
+<div class="review">
+  <%= link_to user_review.user.name, user_path(user_review.user.id) %>
+  <div class="review-rating" data-score="<%= user_review.rate %>"></div>
+  <%= user_review.title %>
+  <%= user_review.content %>
+    <% if user_review.user_id == current_user.id %>
+      <div class="links btn-group">
+        <%= link_to t(".edit"), edit_book_user_review_path(user_review.book, user_review), class: "btn btn-custom" %>
+        <%= link_to t(".delete"), book_user_review_path(user_review.book, user_review), class: "btn btn-custom", method: :delete, data: { confirm: t(".confirm") } %>
+      </div>
+  <% end %>
+</div>
+<script src="/assets/rated.js"></script>
