@@ -11,10 +11,12 @@ class UserReviewsController < ApplicationController
     @user_review.book_id = @book.id
     if @user_review.save
       flash[:info] = t ".created"
+      redirect_to @book
     else
-      flash[:danger] = t "create_fail"
+      respond_to do |format|
+        format.js
+      end
     end
-    redirect_to @book
   end
 
   def edit; end
@@ -24,7 +26,9 @@ class UserReviewsController < ApplicationController
       flash[:info] = t ".edited"
       redirect_to @book
     else
-      render :edit
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

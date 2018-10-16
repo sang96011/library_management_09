@@ -1,9 +1,7 @@
-<div class="text-right row" id="button">
-  <div class="col-md-2 col-md-offset-10">
-    <% if current_user.like?(@book) %>
-      <%= render "likes/unlike" %>
-    <% else %>
-      <%= render "likes/like" %>
-    <% end %>
-  </div>
+<div class="text-right row" id="button_like">
+  <% if current_user.like?(@book) %>
+    <%= render "likes/unlike" %>
+  <% else %>
+    <%= render "likes/like" %>
+  <% end %>
 </div>

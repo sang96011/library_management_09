@@ -6,6 +6,9 @@ class Request < ApplicationRecord
 
   before_create :set_day
 
+  scope :newest, ->{order created_at: :DESC}
+  scope :of_user, -> id {where user_id: id}
+
   def total_book
     request_details.map{|rd| rd.valid? ? rd.number : 0}.sum
   end

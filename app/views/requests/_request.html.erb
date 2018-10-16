@@ -1,11 +1,17 @@
 <li>
   <p><%= link_to t(".id", id: request.id), request_path(request.id) %>
+
+  <p><%= t(".name", name: request.user.name) %></p>
   <p><%= t(".from", from: request.from_day) %></p>
   <p><%= t(".to", to: request.to_day) %></p>
   <p><%= t(".total_book", total_book: request.total_book) %></p>
   <p><%= t(".status", status: request.status) %></p>
+  <p><%= t(".day", day: request.created_at) %></p>
+
   <% if @current_user.admin %>
-  <p><%= link_to t(".accept"), {action: "accept_request", id: request.id }, method: :put %> |
+    <% if request.reject? %>
+    <p><%= link_to t(".accept"), {action: "accept_request", id: request.id }, method: :put %> |
+      <% end %>
   <%= link_to t(".delete"), request, method: :delete, data: {confirm: t(".confirm")} %>
     <p>
   <% end %>

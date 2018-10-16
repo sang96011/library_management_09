@@ -1,1 +1,3 @@
-<%= button_to "- Unfollow", follow_path(book_id: @book.id), remote: true, method: :delete,  class: "btn-primary" %>
+<div class="col-md-2 col-md-offset-10">
+  <%= button_to t(".button_unfollow"), follow_path(id: @book.id), remote: true, method: :delete,  class: "btn-primary" %>
+</div>

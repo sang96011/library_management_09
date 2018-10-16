@@ -104,7 +104,7 @@ en:
       danger: "You can't delete book. Don't ask me why!"
     book_row:
       num_page: "Number page: "
-      add: "Add to Cart"
+      borrow: "Borrow"
     index:
       search: "Search"
       title: "Borrow Books"
@@ -197,23 +197,28 @@ en:
   application:
     login: "Please log in!"
 
-  like:
-    success: "You liked this book"
-    fail: "Like failled"
+  likes:
+    was_liked_book: "You was liked this book"
+    liked_book: "You like this book"
+    like_fail_book: "You can't like this book now"
+    unliked_book: "You unliked this book"
+    unlike_fail: "You can't unlike this book right now"
+    show_like: "Can not show. I don't know reason. Please don't ask me why"
+    like:
+      button_like: "Like"
+    unlike:
+      button_unlike: "Unlike"
 
-  unlike:
-    success: "Unliked this book"
-    fail: "Unlike failled"
-
-  show_like: "Can not show. I don't know reason. Please don't ask me why"
-
-  follow:
-    success: "You followed this book"
-    fail: "Follow failled"
-  unfollow:
-    success: "Unfollowed this book"
-    fail: "Unfollow failled"
-  show_follow: "Can not show. I don't know reason. Please don't ask me why"
+  follows:
+    followed: "You follow this book"
+    follow_fail: "You can't follow rigth now. Try again later!"
+    unfollowed: "You unfollow this book"
+    unfollow_fail: "You can't unfollow right now"
+    show_follow: "Can not show. I don't know reason. Please don't ask me why"
+    follow:
+      button_follow: "+ Follow"
+    unfollow:
+      button_unfollow: "- Unfollow"
 
   categories:
     category:
@@ -265,11 +270,13 @@ en:
     edit:
       title: "Create Request"
     request:
+      name: "User: %{name}"
       id: "Request: %{id}"
       from: "From_day: %{from}"
       to: "To_day: %{to}"
       total_book: "Total number: %{total_book}"
       status: "Status: %{status}"
+      day: "Day create request: %{day}"
       confirm: "Confirm"
       delete: "Delete"
       accept: "Accept"

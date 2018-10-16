@@ -1,1 +1,2 @@
-$('div#<%= dom_id(@book) %>').html('<%= j render partial: "button", locals: {book: @book} %>');
+$("#notice").html("<%= flash[:notice] %>");
+$("#button_follow").html("<%= escape_javascript(render('follows/follow')) %>");

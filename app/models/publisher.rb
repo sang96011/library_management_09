@@ -1,6 +1,7 @@
 class Publisher < ApplicationRecord
   has_many :books
 
+  scope :alphabet, ->{order name: :ASC}
   scope :newest, ->{order updated_at: :DESC}
   scope :search, ->(query){where("name LIKE ?", "%#{query}%") if query.present?}
   scope :_page, ->(page) do
