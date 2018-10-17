@@ -10,9 +10,9 @@
 
   <% if @current_user.admin %>
     <% if request.reject? %>
-    <p><%= link_to t(".accept"), {action: "accept_request", id: request.id }, method: :put %> |
-      <% end %>
-  <%= link_to t(".delete"), request, method: :delete, data: {confirm: t(".confirm")} %>
+      <p><%= link_to t(".accept"), {action: "accept_request", id: request.id }, method: :put %> |
+    <% end %>
+    <%= link_to t(".delete"), request, method: :delete, data: {confirm: t(".confirm")} %>
     <p>
   <% end %>
 </li>
