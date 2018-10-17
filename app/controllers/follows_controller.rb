@@ -1,6 +1,4 @@
 class FollowsController < ApplicationController
-  before_action :load_book
-
   def index
     @follows = Follow.all
   end
@@ -10,7 +8,8 @@ class FollowsController < ApplicationController
   end
 
   def create
-    @follow = current_user.follows.build target: @book
+    @follow = current_user.follows.build target_id: params[:target_id],
+      target_type: params[:target_type]
     if @follow.save
       flash[:notice] = t ".followed"
     else
@@ -19,7 +18,8 @@ class FollowsController < ApplicationController
   end
 
   def destroy
-    follow = Follow.find_by(target_id: params[:id], user_id: current_user)
+    follow = Follow.find_by(target_id: params[:target_id],
+      target_type: params[:target_type], user_id: current_user.id)
     if follow && follow.destroy
       flash[:notice] = t ".unfollowed"
     else
@@ -35,10 +35,7 @@ class FollowsController < ApplicationController
 
   private
 
-  def load_book
-    @book = Book.find_by id: params[:id]
-    return if @book
-    flash[:info] = t "books.no_book"
-    redirect_to books_path
+  def follow_params
+    params.require(:follow).permit :user_id, :target_id, :target_type
   end
 end

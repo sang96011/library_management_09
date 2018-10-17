@@ -56,17 +56,8 @@ class User < ApplicationRecord
     likes.find_by target: book
   end
 
-  def follow! book
-    follows.create! book_id: book.id
-  end
-
-  def unfollow! book
-    follow = follows.find_by id: book.id
-    follow.destroy!
-  end
-
-  def follow? book
-    follows.find_by target_id: book.id
+  def follow? target
+    follows.find_by target: target
   end
 
   def review? book

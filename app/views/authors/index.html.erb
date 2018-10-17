@@ -23,7 +23,7 @@
     <table class="table">
       <tr>
         <th class="active" width="30%"><%= t "authors.name" %></th>
-        <th class="text-center active" width="40%"><%= t "authors.update" %></th>
+        <th class="text-center active" width="40%"><%= t ".detail" %></th>
         <th class="text-right active"><%= t "authors.delete" %></th>
       </tr>
     </table>
@@ -37,7 +37,7 @@
       <table class="table">
         <tr>
           <td class="active" width="30%">
-            <%= link_to author.name, edit_author_url(author) %>
+            <%= link_to author.name, author %>
           </td>
           <td class="text-center active" width="40%">
             <%= author.content %>

@@ -1,5 +1,6 @@
 class Author < ApplicationRecord
   has_many :books
+  has_many :follows, as: :target, dependent: :destroy
 
   scope :alphabet, ->{order name: :ASC}
   scope :search, -> search {where("name LIKE ?", "%#{search}%") if search}
