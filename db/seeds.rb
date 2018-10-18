@@ -1,14 +1,14 @@
 # User
 User.create!(name: "nguyenvana", email: "nguyenvana@gmail.com",
-  password: "123456", password_confirmation: "123456", admin: true)
+  password: "123456", password_confirmation: "123456", admin: true, confirmed_at: DateTime.now)
 User.create!(name: "nhinguyen", email: "nhinguyen@gmail.com",
-  password: "123456", password_confirmation: "123456", admin: true)
+  password: "123456", password_confirmation: "123456", admin: true, confirmed_at: DateTime.now)
 20.times do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(name: name, email: email,
-    password: password, password_confirmation: password)
+    password: password, password_confirmation: password, confirmed_at: DateTime.now)
 end
 
 Publisher

@@ -69,6 +69,6 @@ class UsersController < ApplicationController
     @user = User.find_by id: params[:id]
     return if @user
     flash[:info] = t ".cant_find"
-    redirect_to signup_path
+    redirect_to new_user_registration_path
   end
 end

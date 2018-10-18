@@ -1,7 +1,7 @@
 <% provide :title, @user.name %>
 <h1><%= @user.name %></h1>
 <h2><%= @user.email %></h2>
-<% if logged_in? %>
+<% if user_signed_in? %>
   <div class="row">
     <aside class="col-md-4">
       <section class="stats">
@@ -12,7 +12,7 @@
 <% end %><br>
 <div class="row">
   <div class="col-md-2">
-    <%= render "follow_form" if logged_in? %>
+    <%= render "follow_form" if user_signed_in? %>
   </div>
 
 </div>

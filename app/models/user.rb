@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  has_secure_password
+
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable, :recoverable,
+    :rememberable, :validatable
 
   has_many :likes, dependent: :destroy
   has_many :follows, dependent: :destroy
@@ -37,8 +41,6 @@ class User < ApplicationRecord
     length: {maximum: Settings.user.email.max_length},
     format: {with: VALID_EMAIL_REGEX},
     uniqueness: {case_sensitive: false}
-  validates :password, presence: true,
-    length: {minimum: Settings.user.pass.min_length}
 
   def follow other_user
     following << other_user

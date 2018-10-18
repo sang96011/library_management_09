@@ -19,6 +19,7 @@ en:
       user: "User"
       author: "Author"
       home: "Home"
+      signup: "Sign Up"
 
   static_pages:
     home:
@@ -323,3 +324,54 @@ en:
       edit: "Edit"
       delete: "Delete"
       confirm: "Are you sure?"
+
+  devise:
+    confirmations:
+      new:
+        title: "Resend confirmation instructions"
+    mailer:
+      confirmation_instructions:
+        welcome: "Welcome %{email}!"
+        content: "You can confirm your account email through the link below:"
+        confirm: "Confirm my account"
+      email_changed :
+        hello:  "Hello %{email}!"
+        changing: "We're contacting you to notify you that your email is being changed to %{email}."
+        changed: "We're contacting you to notify you that your email has been changed to %{email}."
+      password_change:
+        hello:  "Hello %{email}!"
+        content: "We're contacting you to notify you that your password has been changed."
+      reset_password_instructions:
+        hello:  "Hello %{email}!"
+        content: "Someone has requested a link to change your password. You can do this through the link below."
+        link: "Change my password"
+        note: "If you didn't request this, please ignore this email. Your password won't change until you access the link above and create a new one."
+    passwords:
+      edit:
+        title: "Change your password"
+        new_pass: "New password"
+        confirm: "Confirm new password"
+      new:
+        title: "Forgot your password?"
+        submit: "Send me reest password instructions"
+    registrations:
+      new:
+        title: "Sign up"
+      edit:
+        title: "Edit %{name}"
+        note_pass: "(leave blank if you don't want to change it)"
+        min_pass: "%{min} characters minimum"
+        need_pass: "(we need your current password to confirm your changes)"
+        submit: "Update"
+        cancel_acc: "Cancel my account"
+        confirm: "Are you sree?"
+        back: "Back"
+    sessions:
+      new:
+        title: "Log in"
+    shared:
+      link:
+        login: "Log in"
+        signup: "Signup"
+        forgot_pass: "Forgot your password?"
+        didn_confirm: "Didn't receive confirmation instructions?"
