@@ -3,7 +3,7 @@ class AuthorsController < ApplicationController
   before_action :load_author, except: [:new, :create, :index]
 
   def index
-    @authors = Author.search(params[:search])._page params[:page]
+    @authors = Author._page params[:page]
     respond_to do |format|
       format.html
       format.xls{send_data @authors.to_xls}

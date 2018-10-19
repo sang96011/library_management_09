@@ -9,7 +9,7 @@ en:
       help: "Help"
     header:
       title: "Library App"
-      login: "Log In"
+      login: "Log In "
       users: "Users"
       account: "Account"
       profile: "Profile"
@@ -19,7 +19,7 @@ en:
       user: "User"
       author: "Author"
       home: "Home"
-      signup: "Sign Up"
+      signup: "Sign Up "
 
   static_pages:
     home:
@@ -119,6 +119,10 @@ en:
       search: "Search"
       title: "Borrow Books"
       content: "You can find all the book here"
+      find:
+        one: "Have %{count} result was found with key '%{key}'"
+        other: "Have %{count} results was found with key '%{key}'"
+      not_found: "No found any book, please try with another keyword!"
     show:
       title: "Book"
       edit: "Edit"

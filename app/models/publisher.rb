@@ -3,7 +3,6 @@ class Publisher < ApplicationRecord
 
   scope :alphabet, ->{order name: :ASC}
   scope :newest, ->{order updated_at: :DESC}
-  scope :search, ->(query){where("name LIKE ?", "%#{query}%") if query.present?}
   scope :_page, ->(page) do
     paginate(page: page, per_page: Settings.publisher.per_page)
   end
