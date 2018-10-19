@@ -1,22 +1,27 @@
 <%= provide :title, t(".all") %>
 <h1><%= t(".all") %></h1>
-<div class= "form-inline">
-  <div class="input-group">
-    <%= form_tag publishers_path, method: :get do %>
-      <%= text_field_tag :query, params[:query],
-        placeholder: t(".search"), class: "form-control" %>
-      <span class="input-group-btn">
-      <%= submit_tag t(".search"), name: nil,
-        class: "btn btn-primary" %><i class="fa fa-search fa-fw"></i>
-      </span>
-    <% end %>
-  </div>
-</div><br>
-<%= t(".download") %>
-<%= link_to t(".excel"), publishers_path(format: "xls") %><br>
-<%= link_to t(".new"), new_publisher_path, class: "btn btn-primary" %><hr>
-<%= render @publishers %>
+<div class="form-group">
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name %>
+    <%= f.search_field :name_cont %>
+    <%= f.submit t(".search"), name: nil %>
+  <% end %>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :name) %></th>
+      <th><%= sort_link(@q, :address) %></th>
+      <th><%= t ".action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @publishers %>
+  </tbody>
+</table>
 <%= will_paginate %>
 
-
-
+<br>
+<%= t(".download") %>
+<%= link_to t(".excel"), publishers_path(format: "xls") %><br>

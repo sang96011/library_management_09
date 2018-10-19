@@ -1,20 +1,24 @@
-<div class="users">
-  <%= link_to t(".new"), new_category_path, class: "btn btn-primary" %>
-  <%= form_tag categories_path, method: :get do %>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag t(".search"), name: nil, class: "btn-primary" %>
+<% provide :title, t(".title") %>
+<h1><%= t ".title" %></h1>
+<div class="form-group">
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name %>
+    <%= f.search_field :name_cont %>
+    <%= f.submit t(".search"), name: nil %>
   <% end %>
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-        <th><%= t ".id" %></th>
-        <th><%= t ".name" %></th>
-        <th><%= t ".parent" %></th>
-        <th><%= t ".action" %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @categories %>
-    </tbody>
-  </table>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :id) %></th>
+      <th><%= sort_link(@q, :name) %></th>
+      <th><%= sort_link(@q, :parent) %></th>
+      <th><%= t ".action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+   <%= render @categories %>
+ </tbody>
+</table>
 </div>

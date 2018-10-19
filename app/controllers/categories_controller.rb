@@ -1,7 +1,8 @@
 class CategoriesController < ApplicationController
   before_action :load_category, except: [:index, :new, :create]
   def index
-    @categories = Category.all
+    @q = Category.ransack params[:q]
+    @categories = @q.result
   end
 
   def new

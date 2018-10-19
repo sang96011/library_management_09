@@ -3,7 +3,8 @@ class PublishersController < ApplicationController
   before_action :admin?
 
   def index
-    @publishers = Publisher.newest._page params[:page]
+    @q = Publisher.ransack params[:q]
+    @publishers = @q.result.newest._page params[:page]
     respond_to do |format|
       format.html
       format.xls{send_data @publishers.to_xls}

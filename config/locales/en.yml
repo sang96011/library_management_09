@@ -240,6 +240,7 @@ en:
       delete: "Delete"
       edit: "Edit"
     index:
+      title: "All Category"
       new: "New Category"
       search: "Search"
       id: "ID"

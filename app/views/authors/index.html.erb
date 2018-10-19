@@ -1,59 +1,40 @@
 <% provide :title, t(".title") %>
 <h1><%= t ".title" %></h1>
-<div class= "form-inline">
-  <div class="input-group">
-    <%= form_tag(authors_path, method: :get) do %>
-    <%= text_field_tag :search, params[:search],
-    placeholder: t(".search"), class: "form-control" %>
-    <span class="input-group-btn">
-      <%= submit_tag t(".search"), name: nil,
-        class: "btn btn-primary" %><i class="fa fa-search fa-fw"></i>
-    </span>
-    <% end %>
-  </div>
+<div class="form-group">
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name %>
+    <%= f.search_field :name_cont %>
+    <%= f.submit t(".search"), name: nil %>
+  <% end %>
 </div>
 <br>
-<div>
-  <%= t ".download" %>
-  <%= link_to t(".excel"), authors_path(format: "xls") %>
-</div><br>
 
-<div class="row">
-  <div class="col-md-12">
-    <table class="table">
-      <tr>
-        <th class="active" width="30%"><%= t "authors.name" %></th>
-        <th class="text-center active" width="40%"><%= t ".detail" %></th>
-        <th class="text-right active"><%= t "authors.delete" %></th>
-      </tr>
-    </table>
-  </div>
-</div>
-
-
-<% @authors.each do |author| %>
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :name) %></th>
+      <th><%= t ".detail" %></th>
+      <th><%= t ".action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @authors.each do |author| %>
         <tr>
-          <td class="active" width="30%">
-            <%= link_to author.name, author %>
-          </td>
-          <td class="text-center active" width="40%">
-            <%= author.content %>
-          </td>
-          <td class="text-right active">
-            <%= link_to t(".delete"),
-              author, method: :delete, data: {confirm: t(".confirm")} %>
+          <td><%= link_to author.name, author %></td>
+          <td><%= author.content %></td>
+          <td>
+            <%= link_to t(".edit"), edit_author_path(author) %> |
+            <%= link_to t(".delete"), author,
+              method: :delete, data: {confirm: t(".confirm")} %>
           </td>
         </tr>
-      </table>
-    </div>
-  </div>
-<% end %>
+    <% end %>
+  </tbody>
+</table>
 
 <%= will_paginate %>
 
-
-
-
+<div>
+  <%= t ".download" %>
+  <%= link_to t(".excel"), authors_path(format: "xls") %>
+</div>
