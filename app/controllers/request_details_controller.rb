@@ -1,6 +1,7 @@
 class RequestDetailsController < ApplicationController
   before_action :load_request, only: [:create, :update, :destroy]
   before_action :load_detail, only: [:update, :destroy]
+  load_and_authorize_resource
 
   def create
     @request_detail = @request.request_details.find_by book_id:

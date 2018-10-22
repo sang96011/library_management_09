@@ -1,6 +1,7 @@
 class AuthorsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :load_author, except: [:new, :create, :index]
+  load_and_authorize_resource
 
   def index
     @q = Author.ransack(params[:q])

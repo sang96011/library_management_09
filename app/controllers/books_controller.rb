@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   before_action :find_book, except: [:new, :create, :index]
   before_action :load_category, only: [:new, :edit, :index]
   before_action :load_all, only: [:new, :edit]
+  load_and_authorize_resource
 
   def index
     @q = Book.ransack(params[:q])

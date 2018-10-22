@@ -1,13 +1,14 @@
 class UserReviewsController < ApplicationController
   before_action :load_book
   before_action :load_review, only: [:edit, :update, :destroy]
+  load_and_authorize_resource
 
   def new
     @user_review = current_user.user_reviews.new
   end
 
   def create
-    @user_review = current_user.user_reviews.build review_params
+    @user_review = current_user.user_reviews.build user_review_params
     @user_review.book_id = @book.id
     if @user_review.save
       flash[:info] = t ".created"
@@ -22,7 +23,7 @@ class UserReviewsController < ApplicationController
   def edit; end
 
   def update
-    if @user_review.update review_params
+    if @user_review.update user_review_params
       flash[:info] = t ".edited"
       redirect_to @book
     else
@@ -43,7 +44,7 @@ class UserReviewsController < ApplicationController
 
   private
 
-  def review_params
+  def user_review_params
     params.require(:user_review).permit :rate, :user_id, :book_id, :content, :title
   end
 

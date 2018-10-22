@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :load_user, except: [:index, :new, :create]
   before_action :admin?, only: :make_admin
+  load_and_authorize_resource
 
   def show
     @user = User.find_by id: params[:id]

@@ -61,6 +61,8 @@ en:
     show:
       make_admin: "Make admin"
     user:
+      admin: "Admin"
+      user: "user"
       make_admin: "Make Admin"
       view_profile: "View my profile"
       edit: "Edit"

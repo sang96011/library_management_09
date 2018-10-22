@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :load_category, except: [:index, :new, :create]
+  load_and_authorize_resource
+
   def index
     @q = Category.ransack params[:q]
     @categories = @q.result

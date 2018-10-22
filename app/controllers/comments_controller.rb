@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :load_book, except: [:index, :create, :new]
+  load_and_authorize_resource
 
   def index
     @comments = Comment.all

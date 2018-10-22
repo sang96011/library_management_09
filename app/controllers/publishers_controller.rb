@@ -1,6 +1,7 @@
 class PublishersController < ApplicationController
   before_action :load_publisher, except: [:index, :new, :create]
-  before_action :admin?
+  before_action :admin?, except: :index
+  load_and_authorize_resource
 
   def index
     @q = Publisher.ransack params[:q]

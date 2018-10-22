@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
-  before_action :admin?, only: :destroy
   before_action :load_request, only: [:destroy, :accept_request]
+  before_action :admin?, only: :destroy
+  load_and_authorize_resource
 
   def show
     @request_details = RequestDetail.of_request(params[:id])
