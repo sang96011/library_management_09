@@ -14,7 +14,9 @@
     <tr>
       <th><%= sort_link(@q, :name) %></th>
       <th><%= t ".detail" %></th>
-      <th><%= t ".action" %></th>
+      <% if can? :manage, @authors %>
+        <th><%= t ".action" %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -22,11 +24,13 @@
         <tr>
           <td><%= link_to author.name, author %></td>
           <td><%= author.content %></td>
-          <td>
-            <%= link_to t(".edit"), edit_author_path(author) %> |
-            <%= link_to t(".delete"), author,
-              method: :delete, data: {confirm: t(".confirm")} %>
-          </td>
+          <% if can? :manage, author %>
+            <td>
+              <%= link_to t(".edit"), edit_author_path(author) %> |
+              <%= link_to t(".delete"), author,
+                method: :delete, data: {confirm: t(".confirm")} %>
+            </td>
+          <% end %>
         </tr>
     <% end %>
   </tbody>

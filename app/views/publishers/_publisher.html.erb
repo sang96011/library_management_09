@@ -1,10 +1,12 @@
 <tr>
   <td><%= publisher.name %></td>
   <td><%= publisher.address %></td>
-  <td>
-    <%= link_to t(".edit"), edit_publisher_path(publisher) %> |
-    <%= link_to t(".delete"), publisher,
-      method: :delete, data: {confirm: t(".confirm")} %>
-  </td>
+  <% if can? :manage, publisher %>
+    <td>
+      <%= link_to t(".edit"), edit_publisher_path(publisher) %> |
+      <%= link_to t(".delete"), publisher,
+        method: :delete, data: {confirm: t(".confirm")} %>
+    </td>
+  <% end %>
 </tr>
 

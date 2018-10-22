@@ -10,7 +10,7 @@
     <dt><%= t(".numberpage") %></dt><dd><%= @book.number_page %></dd>
   </dl>
   <dt><%= t(".content") %></dt><p class="text-justify"><%= @book.content %></p><br>
-  <% if current_user.admin? %>
+  <% if can? :manage, @book  %>
     <%= link_to t(".edit"), edit_book_path(@book) %>
     <%= link_to t(".delete"), @book, method: :delete,
       data: { confirm: t(".confirm") } %>

@@ -14,7 +14,9 @@
       <th><%= sort_link(@q, :id) %></th>
       <th><%= sort_link(@q, :name) %></th>
       <th><%= sort_link(@q, :parent) %></th>
-      <th><%= t ".action" %></th>
+      <% if can? :manage, @categories %>
+        <th><%= t ".action" %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>

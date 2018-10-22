@@ -2,8 +2,10 @@
   <td><%= category.id %></td>
   <td><%= category.name %></td>
   <td><%= category.parent_id %></td>
-  <td>
-    <%= link_to t(".edit"), edit_category_path(category) %> |
-    <%= link_to t(".delete"), category, method: :delete, data: {confirm: t(".confirm")}  %>
-  </td>
+  <% if can? :manage, category %>
+    <td>
+      <%= link_to t(".edit"), edit_category_path(category) %> |
+      <%= link_to t(".delete"), category, method: :delete, data: {confirm: t(".confirm")}  %>
+    </td>
+  <% end %>
 </tr>

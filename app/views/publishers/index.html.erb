@@ -13,7 +13,9 @@
     <tr>
       <th><%= sort_link(@q, :name) %></th>
       <th><%= sort_link(@q, :address) %></th>
-      <th><%= t ".action" %></th>
+      <% if can? :manage, @publishers %>
+        <th><%= t ".action" %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>

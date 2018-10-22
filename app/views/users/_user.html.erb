@@ -1,7 +1,12 @@
 <tr>
-  <td><%= user.name %></td>
+  <td><%= link_to user.name, user %></td>
   <td><%= user.email %></td>
-  <td><%= user.admin %></td>
+  <td><%= user.admin ? t(".admin") : t(".user") %></td>
+    <% if (can? :make_admin, @users) && !user.admin %>
+      <td>
+        <%= button_to t(".make_admin"), {action: "make_admin", id: user.id }, method: :put, class: "btn btn-primary" %>
+      </td>
+    <% end %>
   <td><%= link_to t(".edit"), edit_user_path(user) %></td>
 </tr>
 

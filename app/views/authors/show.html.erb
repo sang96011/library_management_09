@@ -8,8 +8,4 @@
     <dt><%= t(".name") %></dt><dd><%= @author.name %></dd><br>
     <dt><%= t(".detail") %></dt><dd><%= @author.content %></dd>
   </dl>
-
-  <%= link_to t(".edit"), edit_book_path(@author) %>
-  <%= link_to t(".delete"), @author,
-   method: :delete, data: { confirm: t(".confirm") } %>
-  </div>
+</div>

@@ -18,14 +18,49 @@
     <% end %>
   <% end %>
 </div>
-<div class="container">
-  <div class="row">
-
+<% if can? :manage, @books %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th><%= sort_link(@q, :name) %></th>
+        <th><%= sort_link(@q, :category_name, "Category") %></th>
+        <th><%= sort_link(@q, :author_name, "Author") %></th>
+        <th><%= sort_link(@q, :publisger_name, "Pubisher") %></th>
+        <th><%= sort_link(@q, :content) %></th>
+        <th><%= sort_link(@q, :number_page, "Page") %></th>
+        <th><%= sort_link(@q, :year) %></th>
+        <th><%= sort_link(@q, :status) %></th>
+        <th colspan="2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
       <% @books.each do |book| %>
-        <%= render "book_row", book: book, request_detail: @request_detail %>
+          <tr>
+            <td><%= link_to book.name, book %></td>
+            <td><%= book.category_name %></td>
+            <td><%= book.author_name %></td>
+            <td><%= book.publisher_name %></td>
+            <td><%= book.content %></td>
+            <td><%= book.number_page %></td>
+            <td><%= book.year %></td>
+            <td><%= book.status %></td>
+            <td>
+              <%= link_to t(".edit"), edit_book_path(book) %></td>
+              <td><%= link_to t(".delete"), book,
+                method: :delete, data: {confirm: t(".confirm")} %>
+            </td>
+          </tr>
       <% end %>
-
+    </tbody>
+  </table>
+  <%= will_paginate %>
+<% else %>
+  <div class="container">
+    <div class="row">
+        <% @books.each do |book| %>
+          <%= render "book_row", book: book, request_detail: @request_detail %>
+        <% end %>
+    </div>
+        <%= will_paginate %>
   </div>
-      <%= will_paginate %>
-</div>
-
+<% end %>

@@ -21,7 +21,10 @@
       <th><%= sort_link(@q, :name) %></th>
       <th><%= sort_link(@q, :email) %></th>
       <th><%= t ".admin" %></th>
-      <th><%= t ".action" %></th>
+      <% if (can? :make_admin, @users) %>
+        <th><%= t ".assign" %></th>
+      <% end %>
+      <th><%= t ".edit" %></th>
     </tr>
   </thead>
   <tbody>

@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_request, only: [:destroy, :accept_request]
   before_action :admin?, only: :destroy
   load_and_authorize_resource
