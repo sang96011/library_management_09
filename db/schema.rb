@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181017135734) do
+ActiveRecord::Schema.define(version: 20181023064841) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(version: 20181017135734) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "user_id"
-    t.datetime "from_day", default: "2018-10-18 01:53:13"
-    t.datetime "to_day", default: "2018-10-25 01:53:13"
+    t.datetime "from_day", default: "2018-10-23 06:37:24"
+    t.datetime "to_day", default: "2018-10-30 06:37:24"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -134,6 +134,12 @@ ActiveRecord::Schema.define(version: 20181017135734) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string "provider"
+    t.string "uid"
+    t.string "token"
+    t.integer "expires_at"
+    t.boolean "expires"
+    t.string "refresh_token"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

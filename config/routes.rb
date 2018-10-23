@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   put "admin/:id", to: "users#make_admin", as: "make_admin"
   put "admin/request/:id", to: "requests#accept_request", as: "accept_request"
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :users do
     member do
