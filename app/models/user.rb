@@ -2,9 +2,9 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   # Include default devise modules. Others available are:
-  # :lockable, :timeoutable, :trackable and :omniauthable
+  # :lockable, :timeoutable, :trackable and
   devise :database_authenticatable, :registerable, :confirmable, :recoverable,
-    :rememberable, :validatable
+    :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :likes, dependent: :destroy
   has_many :follows, dependent: :destroy
@@ -32,6 +32,16 @@ class User < ApplicationRecord
         csv << user.attributes.values_at(*column_names)
       end
     end
+  end
+
+ def self.from_omniauth(auth)
+    data = auth.info
+    user = User.where(email: data["email"]).first
+    unless user
+      password = Devise.friendly_token[0,20]
+      user = User.create!(name: data["name"], email: data["email"], password: password, password_confirmation: password, confirmed_at: DateTime.now)
+    end
+    user
   end
 
   validates :name, presence: true,
