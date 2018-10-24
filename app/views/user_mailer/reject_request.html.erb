@@ -1,0 +1,13 @@
+<h1><%= t ".hi", email: @user.email %></h1>
+<p>
+  <%= t ".request" %>
+  <%= link_to t("base_title"), root_url %>
+  <%= t ".reject" %>
+</p>
+<p>
+  <%= t ".view" %>
+  <%= link_to t(".request"), requests_url %>.
+</p>
+<p>
+  <%= t ".thanks" %>
+</p>

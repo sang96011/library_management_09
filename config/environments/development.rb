@@ -63,4 +63,8 @@ Rails.application.configure do
     domain: "gmail.com",
     enable_starttls_auto: true,
   }
+  config.action_mailer.perform_deliveries = true
+  config.active_job.queue_adapter = :sidekiq
+  config.active_job.queue_name_prefix = "mysite"
+  config.active_job.queue_name_delimiter = "_"
 end

@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_request, only: [:destroy, :accept_request]
+  before_action :load_request, only: [:destroy, :accept_request, :reject_request]
   before_action :admin?, only: :destroy
   load_and_authorize_resource
 
@@ -14,12 +14,13 @@ class RequestsController < ApplicationController
 
   def update
     if current_request.update_attributes request_params
+      UserMailer.create_request(@request.user_id).deliver_later
       flash[:info] = t ".created"
       session[:request_id] = nil
     else
       flash[:danger] = t ".create_fail"
     end
-    redirect_to root_path
+    redirect_to requests_path
   end
 
   def index
@@ -37,6 +38,7 @@ class RequestsController < ApplicationController
 
   def destroy
     if @request.destroy
+      UserMailer.delete_request(@request.user_id).deliver_later
       flash[:info] = t ".deleted"
     else
       flash[:danger] = t ".delete_fail"
@@ -46,9 +48,20 @@ class RequestsController < ApplicationController
 
   def accept_request
     if @request.accept!
+      UserMailer.accept_request(@request.user_id).deliver_later
       flash[:success] = t ".accept_success"
     else
       flash[:danger] = t ".accept_fail!"
+    end
+    redirect_to requests_path
+  end
+
+  def reject_request
+    if @request.reject!
+      UserMailer.reject_request(@request.user_id).deliver_later
+      flash[:success] = t ".reject_success"
+    else
+      flash[:danger] = t ".reject_fail!"
     end
     redirect_to requests_path
   end

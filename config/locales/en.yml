@@ -274,9 +274,19 @@ en:
     no_detail: "Don't have request detail!"
     accept_success: "Accept success"
     accept_fail: "Accept fail!"
+    reject_success: "Reject success"
+    reject_fail: "Reject fail!"
     cant_find: "Can not found request"
     index:
       all: "All request"
+      id: "ID"
+      user: "User"
+      fromday: "From-Day"
+      today: "To-Day"
+      daycreate: "Day-Create"
+      number: "Total Number"
+      status:  "Status"
+      action: "Action"
     show:
       id: "ID: %{id}"
       name: "Book: %{name}"
@@ -287,16 +297,10 @@ en:
     edit:
       title: "Create Request"
     request:
-      name: "User: %{name}"
-      id: "Request: %{id}"
-      from: "From_day: %{from}"
-      to: "To_day: %{to}"
-      total_book: "Total number: %{total_book}"
-      status: "Status: %{status}"
-      day: "Day create request: %{day}"
       confirm: "Confirm"
       delete: "Delete"
       accept: "Accept"
+      reject: "Reject"
 
   request_details:
     exist_detail: "You was add this book into cart! Goto Cart to update number if you want"
@@ -386,3 +390,34 @@ en:
         signup: "Signup"
         forgot_pass: "Forgot your password?"
         didn_confirm: "Didn't receive confirmation instructions?"
+
+  user_mailer:
+    accept_request:
+      hi: "Hi, %{email}"
+      request: "Your request in "
+      accept: " was accepted."
+      view: "View detail at "
+      request: "Request"
+      thanks: "Thanks to visit my page. See you came back."
+    create_request:
+      hi: "Hi, %{email}"
+      request: "Your request in "
+      create: " was create success."
+      process: "We will let you know when your request is processed."
+      view: "View detail at "
+      request: "Request"
+      thanks: "Thanks to visit my page. See you came back."
+    reject_request:
+      hi: "Hi, %{email}"
+      request: "Your request in "
+      reject: " was rejected."
+      view: "View detail at "
+      request: "Request"
+      thanks: "Thanks to visit my page. See you came back."
+    delete_request:
+      hi: "Hi, %{email}"
+      request: "Your request in "
+      delete: " was deleted, because your request is expired."
+      view: "View detail at "
+      request: "Request"
+      thanks: "Thanks to visit my page. See you came back."

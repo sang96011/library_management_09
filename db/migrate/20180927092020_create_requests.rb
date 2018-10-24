@@ -4,7 +4,7 @@ class CreateRequests < ActiveRecord::Migration[5.1]
       t.references :user, foreign_key: true
       t.datetime :from_day, default: Time.now
       t.datetime :to_day, default: Time.now+7.days
-      t.integer :status, null: false, default: 0
+      t.integer :status, null: false, default: 2
 
       t.timestamps
     end

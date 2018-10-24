@@ -1,17 +1,27 @@
-<li>
-  <p><%= link_to t(".id", id: request.id), request_path(request.id) %>
-  <p><%= t(".name", name: request.user.name) %></p>
-  <p><%= t(".from", from: request.from_day) %></p>
-  <p><%= t(".to", to: request.to_day) %></p>
-  <p><%= t(".total_book", total_book: request.total_book) %></p>
-  <p><%= t(".status", status: request.status) %></p>
-  <p><%= t(".day", day: request.created_at) %></p>
-
-  <% if can? :manage, request %>
-    <% if (request.reject?  && (can? :accept_request, request))  %>
-      <p><%= link_to t(".accept"), {action: "accept_request", id: request.id }, method: :put %> |
+<tr>
+  <td><%= link_to request.id, request_path(request.id) %></td>
+  <% if current_user.admin %>
+    <td><%= request.user.name %></td>
+  <% end %>
+  <td><%= request.from_day %></td>
+  <td><%= request.to_day %></td>
+  <td><%= request.created_at %></td>
+  <td><%= request.total_book %></td>
+  <td>
+    <% case request.status %>
+    <% when "accept" %>
+      <span class="label label-success"><%= request.status %></span>
+    <% when "reject" %>
+      <span class="label label-danger"><%= request.status %></span>
+    <% when "waiting" %>
+      <span class="label label-warning"><%= request.status %></span>
+    <% end %>
+  </td>
+  <td>
+    <% if can? :manage_request, request %>
+      <%= link_to t(".accept"), {action: "accept_request", id: request.id }, method: :put %> |
+      <%= link_to t(".reject"), {action: "reject_request", id: request.id }, method: :put %> |
     <% end %>
     <%= link_to t(".delete"), request, method: :delete, data: {confirm: t(".confirm")} %>
-    <p>
-  <% end %>
-</li>
+  </td>
+</tr>

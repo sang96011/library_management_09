@@ -1,5 +1,5 @@
 class Request < ApplicationRecord
-  enum status: {reject: 0, accept: 1}
+  enum status: {reject: 0, accept: 1, waiting: 2}
 
   belongs_to :user
   has_many :request_details, dependent: :destroy
