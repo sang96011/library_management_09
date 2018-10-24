@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-  before_action :logged_in_user, except: :index
+  before_action :authenticate_user!, except: :index
   before_action :load_author, except: [:new, :create, :index]
 
   def index
@@ -11,7 +11,7 @@ class AuthorsController < ApplicationController
   end
 
   def show
-     @follow = Follow.of_author(@author)
+    @follow = Follow.of_author(@author)
   end
 
   def new
@@ -65,6 +65,6 @@ class AuthorsController < ApplicationController
     @author = Author.find_by id: params[:id]
     return if @author
     flash[:info] = t ".no_author"
-    redirect_to signup_path
+    redirect_to root_path
   end
 end

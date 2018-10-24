@@ -29,7 +29,7 @@ class RequestsController < ApplicationController
 
     if @requests.blank?
       flash[:info] = t ".no_request"
-      redirect_back fallback_location: root_path
+      redirect_to root_path
     end
   end
 
@@ -48,7 +48,7 @@ class RequestsController < ApplicationController
     else
       flash[:danger] = t ".accept_fail!"
     end
-    redirect_back fallback_location: root_path
+    redirect_to requests_path
   end
 
   private
