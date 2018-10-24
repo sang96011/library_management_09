@@ -47,10 +47,14 @@ en:
       confirm: "Confirmation"
       create: "Create my account"
     index:
-      all: "All user"
+      title: "All user"
       search: "Search"
       download: "Download:"
       excel: "Excel"
+      admin: "Admin"
+      user: "User"
+      all: "All"
+      action: "Action"
     edit:
       submit: "Save changes"
       update: "Update user"

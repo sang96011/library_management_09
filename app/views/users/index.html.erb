@@ -1,21 +1,35 @@
-<% provide :title, t(".all") %>
-<h1><%= t ".all" %></h1>
-<div class= "form-inline">
-  <div class="input-group">
-    <%= form_tag users_path, method: :get do %>
-    <%= text_field_tag :query, params[:query],
-    placeholder: t(".search"), class: "form-control" %>
-    <span class="input-group-btn">
-      <%= submit_tag t(".search"), name: nil,
-        class: "btn btn-primary" %><i class="fa fa-search fa-fw"></i>
-    </span>
-    <% end %>
-  </div>
+<% provide :title, t(".title") %>
+<h1><%= t ".title" %></h1>
+<div class="form-group">
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name_or_email_cont %>
+    <%= f.search_field :name_or_email_cont %>
+
+    <%= f.label t(".admin") %>
+    <%= f.radio_button :admin_eq, true%>
+    <%= f.label t(".user") %>
+    <%= f.radio_button :admin_eq, false %>
+    <%= f.label t(".all") %>
+    <%= f.radio_button :admin_eq, nil %>
+
+    <%= f.submit t(".search"), name: nil %>
+  <% end %>
 </div>
-<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :name) %></th>
+      <th><%= sort_link(@q, :email) %></th>
+      <th><%= t ".admin" %></th>
+      <th><%= t ".action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>
+<%= will_paginate %>
 <div>
   <%= t ".download" %>
   <%= link_to t(".excel"), users_path(format: "xls") %>
 </div><br>
-<%= render @users %>
-<%= will_paginate %>

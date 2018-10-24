@@ -23,8 +23,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.find_by id: params[:id]
-    @users = User.search(params[:query]).newest._page params[:page]
+    @q = User.ransack(params[:q])
+    @users = @q.result.newest._page params[:page]
     respond_to do |format|
       format.html
       format.xls{send_data @users.to_xls}
