@@ -13,6 +13,7 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
+//= require social-share-button
 //= require_tree .
 window.setTimeout(function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
