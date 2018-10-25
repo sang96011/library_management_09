@@ -1,21 +1,31 @@
 <% provide :title, t(".title") %>
 <h3 class="text-center"><%= t ".title"%></h3>
-<div class="input-group">
-  <%= form_tag(books_path, method: :get) do %>
-  <%= text_field_tag :search, params[:search],
-    placeholder: t(".search"), class: "form-control" %>
-  <span class="input-group-btn">
-    <%= submit_tag t(".search"), name: nil,
-      class: "btn btn-primary" %><i class="fa fa-search fa-fw"></i>
-  </span>
+<div align="center">
+  <%= search_form_for @q do |f| %>
+    <%= f.label :book %>
+    <%= f.search_field :book_cont %>
+    <%= f.collection_select :category_id_eq, @categories, :id, :name, include_blank: t(".all") %>
+    <%= f.submit t(".search"), name: nil %>
   <% end %>
 </div>
 <br>
-<div class="row">
-  <div class="col-xs-6 col-xs-offset-3">
-    <% @books.each do |book| %>
-      <%= render "book_row", book: book, request_detail: @request_detail %>
+<div class="search">
+  <% if params[:q] %>
+    <% if @books.count>0 %>
+      <h4 class="text-center" style="color: green"><%= t(".find", count: @books.count, key: params[:q][:book_cont]) %></h4>
+    <% else %>
+      <h4 class="text-center" style="color: red"><%= t ".not_found" %></h4>
     <% end %>
-      <%= will_paginate %>
-  </div>
+  <% end %>
 </div>
+<div class="container">
+  <div class="row">
+
+      <% @books.each do |book| %>
+        <%= render "book_row", book: book, request_detail: @request_detail %>
+      <% end %>
+
+  </div>
+      <%= will_paginate %>
+</div>
+

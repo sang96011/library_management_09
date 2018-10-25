@@ -1,10 +1,12 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :find_book, except: [:new, :create, :index]
+  before_action :load_category, only: [:new, :edit, :index]
   before_action :load_all, only: [:new, :edit]
 
   def index
-    @books = Book.search(params[:search])._page params[:page]
+    @q = Book.ransack(params[:q])
+    @books = @q.result._page params[:page]
     @request_detail = current_request.request_details.new
   end
 
@@ -67,8 +69,11 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
-  def load_all
+  def load_category
     @categories = Category.alphabet
+  end
+
+  def load_all
     @authors = Author.alphabet
     @publishers = Publisher.alphabet
   end

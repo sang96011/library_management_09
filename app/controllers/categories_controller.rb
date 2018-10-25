@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :load_category, except: [:index, :new, :create]
   def index
-    @categories = Category.search(params[:query])
+    @categories = Category.all
   end
 
   def new
